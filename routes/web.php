@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/*
+|--------------------------------------------------------------------------
+| Front Routes
+|--------------------------------------------------------------------------
+*/
+Route::view('/', 'index')->name('home');
+
+Route::group(['prefix' => '/dashboard', 'as' => 'dashboard'], function () {
+    Route::view('/', 'customer.dashboard');
 });
+
+Auth::routes();
