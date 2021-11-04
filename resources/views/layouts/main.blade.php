@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('css/chosen.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/color-01.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
         @yield('style')
     </head>
     <body>
