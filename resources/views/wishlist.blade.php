@@ -10,7 +10,7 @@
             ]) !!}" page-name="{!! __('Wishlist') !!}" />
             <div class="banner-shop">
                 <a href="#" class="banner-link">
-                    <figure><img src="{{ asset('images/shop-banner.jpg') }}" alt=""></figure>
+                    <figure><img src="{{ asset('images/shop-banner.webp') }}" alt=""></figure>
                 </a>
             </div>
             <div class="row">
@@ -19,7 +19,7 @@
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('images/products/digital_20.jpg') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                    <figure><img src="{{ asset('images/products/digital_20.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
                             <div class="product-info">
@@ -33,7 +33,7 @@
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('images/products/digital_22.jpg') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                    <figure><img src="{{ asset('images/products/digital_22.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
                             <div class="product-info">
@@ -47,7 +47,7 @@
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('images/products/digital_10.jpg') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                    <figure><img src="{{ asset('images/products/digital_10.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
                             <div class="product-info">
@@ -61,7 +61,7 @@
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('images/products/digital_01.jpg') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                    <figure><img src="{{ asset('images/products/digital_01.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
                             <div class="product-info">
@@ -75,7 +75,7 @@
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('images/products/digital_21.jpg') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                    <figure><img src="{{ asset('images/products/digital_21.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
                             <div class="product-info">

@@ -103,7 +103,7 @@
 							<div class="team-member equal-elem">
 								<div class="media">
 									<a href="#" title="LEONA">
-										<figure><img src="{{ asset('images/member-leona.jpg') }}" alt="LEONA"></figure>
+										<figure><img src="{{ asset('images/member-leona.webp') }}" alt="LEONA"></figure>
 									</a>
 								</div>
 								<div class="info">
@@ -115,7 +115,7 @@
 							<div class="team-member equal-elem">
 								<div class="media">
 									<a href="#" title="LUCIA">
-										<figure><img src="{{ asset('images/member-lucia.jpg') }}" alt="LUCIA"></figure>
+										<figure><img src="{{ asset('images/member-lucia.webp') }}" alt="LUCIA"></figure>
 									</a>
 								</div>
 								<div class="info">
@@ -127,7 +127,7 @@
 							<div class="team-member equal-elem">
 								<div class="media">
 									<a href="#" title="NANA">
-										<figure><img src="{{ asset('images/member-nana.jpg') }}" alt="NANA"></figure>
+										<figure><img src="{{ asset('images/member-nana.webp') }}" alt="NANA"></figure>
 									</a>
 								</div>
 								<div class="info">
@@ -139,7 +139,7 @@
 							<div class="team-member equal-elem">
 								<div class="media">
 									<a href="#" title="BRAUM">
-										<figure><img src="{{ asset('images/member-braum.jpg') }}" alt="BRAUM"></figure>
+										<figure><img src="{{ asset('images/member-braum.webp') }}" alt="BRAUM"></figure>
 									</a>
 								</div>
 								<div class="info">
@@ -151,7 +151,7 @@
 							<div class="team-member equal-elem">
 								<div class="media">
 									<a href="#" title="LUCIA">
-										<figure><img src="{{ asset('images/member-lucia.jpg') }}" alt="LUCIA"></figure>
+										<figure><img src="{{ asset('images/member-lucia.webp') }}" alt="LUCIA"></figure>
 									</a>
 								</div>
 								<div class="info">
@@ -163,7 +163,7 @@
 							<div class="team-member equal-elem">
 								<div class="media">
 									<a href="#" title="NANA">
-										<figure><img src="{{ asset('images/member-nana.jpg') }}" alt="NANA"></figure>
+										<figure><img src="{{ asset('images/member-nana.webp') }}" alt="NANA"></figure>
 									</a>
 								</div>
 								<div class="info">

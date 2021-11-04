@@ -14,29 +14,29 @@
 						<div class="detail-media">
 							<div class="product-gallery">
 							  <ul class="slides">
-							    <li data-thumb="{{ asset('images/products/digital_18.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_18.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_18.webp') }}">
+							    	<img src="{{ asset('images/products/digital_18.webp') }}" alt="product thumbnail" />
 							    </li>
-							    <li data-thumb="{{ asset('images/products/digital_17.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_17.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_17.webp') }}">
+							    	<img src="{{ asset('images/products/digital_17.webp') }}" alt="product thumbnail" />
 							    </li>
-							    <li data-thumb="{{ asset('images/products/digital_15.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_15.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_15.webp') }}">
+							    	<img src="{{ asset('images/products/digital_15.webp') }}" alt="product thumbnail" />
 							    </li>
-							    <li data-thumb="{{ asset('images/products/digital_02.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_02.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_02.webp') }}">
+							    	<img src="{{ asset('images/products/digital_02.webp') }}" alt="product thumbnail" />
 							    </li>
-							    <li data-thumb="{{ asset('images/products/digital_08.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_08.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_08.webp') }}">
+							    	<img src="{{ asset('images/products/digital_08.webp') }}" alt="product thumbnail" />
 							    </li>
-							    <li data-thumb="{{ asset('images/products/digital_10.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_10.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_10.webp') }}">
+							    	<img src="{{ asset('images/products/digital_10.webp') }}" alt="product thumbnail" />
 							    </li>
-							    <li data-thumb="{{ asset('images/products/digital_12.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_12.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_12.webp') }}">
+							    	<img src="{{ asset('images/products/digital_12.webp') }}" alt="product thumbnail" />
 							    </li>
-							    <li data-thumb="{{ asset('images/products/digital_14.jpg') }}">
-							    	<img src="{{ asset('images/products/digital_14.jpg') }}" alt="product thumbnail" />
+							    <li data-thumb="{{ asset('images/products/digital_14.webp') }}">
+							    	<img src="{{ asset('images/products/digital_14.webp') }}" alt="product thumbnail" />
 							    </li>
 							  </ul>
 							</div>
@@ -116,7 +116,7 @@
 											<ol class="commentlist">
 												<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
 													<div id="comment-20" class="comment_container"> 
-														<img alt="" src="{{ asset('images/author-avata.jpg') }}" height="80" width="80">
+														<img alt="" src="{{ asset('images/author-avata.webp') }}" height="80" width="80">
 														<div class="comment-text">
 															<div class="star-rating">
 																<span class="width-80-percent">Rated <strong class="rating">5</strong> out of 5</span>
@@ -227,7 +227,7 @@
 									<div class="product product-widget-style">
 										<div class="thumbnnail">
 											<a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-												<figure><img src="{{ asset('images/products/digital_01.jpg') }}" alt=""></figure>
+												<figure><img src="{{ asset('images/products/digital_01.webp') }}" alt=""></figure>
 											</a>
 										</div>
 										<div class="product-info">
@@ -240,7 +240,7 @@
 									<div class="product product-widget-style">
 										<div class="thumbnnail">
 											<a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-												<figure><img src="{{ asset('images/products/digital_17.jpg') }}" alt=""></figure>
+												<figure><img src="{{ asset('images/products/digital_17.webp') }}" alt=""></figure>
 											</a>
 										</div>
 										<div class="product-info">
@@ -253,7 +253,7 @@
 									<div class="product product-widget-style">
 										<div class="thumbnnail">
 											<a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-												<figure><img src="{{ asset('images/products/digital_18.jpg') }}" alt=""></figure>
+												<figure><img src="{{ asset('images/products/digital_18.webp') }}" alt=""></figure>
 											</a>
 										</div>
 										<div class="product-info">
@@ -266,7 +266,7 @@
 									<div class="product product-widget-style">
 										<div class="thumbnnail">
 											<a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-												<figure><img src="{{ asset('images/products/digital_20.jpg') }}" alt=""></figure>
+												<figure><img src="{{ asset('images/products/digital_20.webp') }}" alt=""></figure>
 											</a>
 										</div>
 										<div class="product-info">
@@ -287,7 +287,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_04.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_04.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item new-label">new</span>
@@ -304,7 +304,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_17.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_17.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item sale-label">sale</span>
@@ -321,7 +321,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_15.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_15.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item new-label">new</span>
@@ -339,7 +339,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_01.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_01.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item bestseller-label">Bestseller</span>
@@ -356,7 +356,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_21.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_21.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="wrap-btn">
 											<a href="#" class="function-link">quick view</a>
@@ -370,7 +370,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_03.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_03.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item sale-label">sale</span>
@@ -387,7 +387,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_04.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_04.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item new-label">new</span>
@@ -404,7 +404,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-											<figure><img src="{{ asset('images/products/digital_05.jpg') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+											<figure><img src="{{ asset('images/products/digital_05.webp') }}" width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item bestseller-label">Bestseller</span>
