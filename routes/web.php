@@ -19,9 +19,16 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::view('/', 'index')->name('home');
+Route::view('/washlist', 'wishlist')->name('wishlist');
+Route::view('/cart', 'cart')->name('cart');
+Route::view('/shop', 'shop')->name('shop');
+Route::view('/about-us', 'about-us')->name('about-us');
+Route::view('/contact-us', 'contact-us')->name('contact-us');
+Route::view('/product/{aliases?}', 'product')->name('product');
 
-Route::group(['prefix' => '/dashboard', 'as' => 'dashboard'], function () {
+Route::group(['prefix' => '/dashboard', 'as' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::view('/', 'customer.dashboard');
+    Route::view('/order-history', 'customer.order-history')->name('.order-history');
 });
 
 Auth::routes();
