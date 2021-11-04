@@ -5,7 +5,7 @@
                 <div class="container">
                     <div class="topbar-menu left-menu">
                         <ul>
-                            <li class="menu-item" >
+                            <li class="menu-item">
                                 <a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
                             </li>
                         </ul>
@@ -67,7 +67,7 @@
             <div class="container">
                 <div class="mid-section main-info-area">
                     <div class="wrap-logo-top left-section">
-                        <a href="index.html" class="link-to-home"><img src="{{ asset('images/logo-top-1.png') }}" alt="mercado"></a>
+                        <a href="{{ route('home') }}" class="link-to-home"><img src="{{ asset('images/logo-top-1.png') }}" alt="mercado"></a>
                     </div>
                     <div class="wrap-search center-section">
                         <div class="wrap-search-form">
@@ -102,7 +102,7 @@
                     </div>
                     <div class="wrap-icon right-section">
                         <div class="wrap-icon-section wishlist">
-                            <a href="#" class="link-direction">
+                            <a href="{{ route('wishlist') }}" class="link-direction">
                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
                                     <span class="index">0 item</span>
@@ -111,7 +111,7 @@
                             </a>
                         </div>
                         <div class="wrap-icon-section minicart">
-                            <a href="#" class="link-direction">
+                            <a href="{{ route('cart') }}" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
                                     <span class="index">4 items</span>
@@ -145,19 +145,19 @@
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
                             <li class="menu-item home-icon">
-                                <a href="index.html" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                <a href="{{ route('home') }}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
                             </li>
                             <li class="menu-item">
-                                <a href="about-us.html" class="link-term mercado-item-title">About Us</a>
+                                <a href="{{ route('shop') }}" class="link-term mercado-item-title">Shop</a>
                             </li>
                             <li class="menu-item">
-                                <a href="shop.html" class="link-term mercado-item-title">Shop</a>
+                                <a href="{{ route('cart') }}" class="link-term mercado-item-title">Cart</a>
                             </li>
                             <li class="menu-item">
-                                <a href="cart.html" class="link-term mercado-item-title">Cart</a>
+                                <a href="{{ route('about-us') }}" class="link-term mercado-item-title">About Us</a>
                             </li>
                             <li class="menu-item">
-                                <a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
+                                <a href="{{ route('contact-us') }}" class="link-term mercado-item-title">Contact Us</a>
                             </li>
                         </ul>
                     </div>

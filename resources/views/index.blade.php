@@ -9,7 +9,7 @@
                     <div class="item-slide">
                         <img src="{{ asset('images/main-slider-1-1.jpg') }}" alt="" class="img-slide">
                         <div class="slide-info slide-1">
-                            <h2 class="f-title">Kid Smart <b>Watches</b></h2>
+                            <h2 class="f-title">Smart <b>Watches</b></h2>
                             <span class="subtitle">Compra todos tus productos Smart por internet.</span>
                             <p class="sale-info">Only price: <span class="price">$59.99</span></p>
                             <a href="#" class="btn-link">Shop Now</a>
