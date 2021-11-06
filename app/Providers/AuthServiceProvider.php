@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('hired', function ($user) {
+            return (bool) $user->rank;
+        });
     }
 }

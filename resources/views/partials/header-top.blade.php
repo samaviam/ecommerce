@@ -36,26 +36,29 @@
                     <li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">Login</a></li>
                     <li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">Register</a></li>
                 @else
-                    <li class="menu-item menu-item-has-children parent" >
-                        <a title="My Account" href="#">My Account (Admin)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                        <ul class="submenu curency" >
-                            <li class="menu-item"><a href="#">Products</a></li>
-                            <li class="menu-item"><a href="#">Categories</a></li>
-                            <li class="menu-item"><a href="#">Coupons</a></li>
-                            <li class="menu-item"><a href="#">Orders</a></li>
-                            <li class="menu-item"><a href="#">Customers</a></li>
-                            <li class="menu-item" ><a title="Logout" href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item menu-item-has-children parent" >
-                        <a title="My Account" href="#">My Account (User)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                        <ul class="submenu curency" >
-                            <li class="menu-item"><a href="#">Orders</a></li>
-                            <li class="menu-item"><a href="#">Address</a></li>
-                            <li class="menu-item"><a href="#">Account Details</a></li>
-                            <li class="menu-item" ><a title="Logout" href="#">Logout</a></li>
-                        </ul>
-                    </li>
+                    @can('hired')
+                        <li class="menu-item menu-item-has-children parent" >
+                            <a title="My Account" href="#">My Account (Admin)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <ul class="submenu curency" >
+                                <li class="menu-item"><a href="#">Products</a></li>
+                                <li class="menu-item"><a href="#">Categories</a></li>
+                                <li class="menu-item"><a href="#">Coupons</a></li>
+                                <li class="menu-item"><a href="#">Orders</a></li>
+                                <li class="menu-item"><a href="#">Customers</a></li>
+                                <li class="menu-item" ><a title="Logout" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="menu-item menu-item-has-children parent" >
+                            <a title="My Account" href="#">My Account (User)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <ul class="submenu curency" >
+                                <li class="menu-item"><a href="#">Orders</a></li>
+                                <li class="menu-item"><a href="#">Address</a></li>
+                                <li class="menu-item"><a href="#">Account Details</a></li>
+                                <li class="menu-item" ><a title="Logout" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    @endcan
                 @endguest
             </ul>
         </div>

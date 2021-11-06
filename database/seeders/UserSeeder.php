@@ -4,9 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use App\Models\Rank;
 use App\Models\User;
 
-class UserTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,6 +20,7 @@ class UserTableSeeder extends Seeder
 
         // Add an Admin
         User::create([
+            'rank_id' => Rank::first()->id,
             'name' => env('ADMIN_NAME', 'admin'),
             'email' => env('ADMIN_EMAIL', 'admin@admin.com'),
             'email_verified_at' => now(),
