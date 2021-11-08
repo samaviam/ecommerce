@@ -17,6 +17,11 @@
         <div class="col-md-3 col-sm-6">
           <a href="{{ route('dashboard.order-history') }}" class="account-links">{{ __('Order history') }}</a>
         </div>
+        @can('hired')
+          <div class="col-md-3 col-sm-6">
+            <a href="{{ route('admin') }}" class="account-links">{{ __('Professional (:rank)', ['rank' => auth()->user()->rank->name]) }}</a>
+          </div>
+        @endcan
       </div>
     </div>
   </div>
