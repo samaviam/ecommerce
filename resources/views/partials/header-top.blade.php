@@ -38,7 +38,7 @@
                 @else
                     @can('hired')
                         <li class="menu-item menu-item-has-children parent" >
-                            <a title="My Account" href="#">My Account (Admin)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <a title="My Account" href="{{ route('dashboard') }}">My Account (Admin)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <ul class="submenu curency" >
                                 <li class="menu-item"><a href="#">Products</a></li>
                                 <li class="menu-item"><a href="#">Categories</a></li>
@@ -50,7 +50,7 @@
                         </li>
                     @else
                         <li class="menu-item menu-item-has-children parent" >
-                            <a title="My Account" href="#">My Account (User)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <a title="My Account" href="{{ route('dashboard') }}">My Account (User)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <ul class="submenu curency" >
                                 <li class="menu-item"><a href="#">Orders</a></li>
                                 <li class="menu-item"><a href="#">Address</a></li>

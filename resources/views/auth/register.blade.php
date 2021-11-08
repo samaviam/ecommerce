@@ -13,6 +13,7 @@
                     <div class=" main-content-area">
                         <div class="wrap-login-item ">
                             <div class="register-form form-item ">
+                                @include('partials.errors')
                                 <form class="form-stl" name="frm-login" method="POST" action="{{ route('register') }}" >
                                     @csrf
                                     <fieldset class="wrap-title">

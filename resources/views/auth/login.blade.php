@@ -13,6 +13,7 @@
                     <div class=" main-content-area">
                         <div class="wrap-login-item ">
                             <div class="login-form form-item form-stl">
+                                @include('partials.errors')
                                 <form name="frm-login" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <fieldset class="wrap-title">
@@ -38,7 +39,7 @@
                                             type="password"
                                             id="frm-login-pass"
                                             @error('password')class="is-invalid"@enderror
-                                            name="pass"
+                                            name="password"
                                             placeholder="************"
                                             required autocomplete="current-password"
                                         />
