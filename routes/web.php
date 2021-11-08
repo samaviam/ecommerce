@@ -32,3 +32,12 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard', 'middleware' => 'au
 });
 
 Auth::routes();
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => '/admin', 'as' => 'admin'], function () {
+    Route::view('/dashboard', 'admin.dashboard');
+});
