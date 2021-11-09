@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use App\View\Components\Breadcrumb;
+use App\View\Components\Table;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
     private function registerComponents()
     {
         Blade::component('breadcrumb', Breadcrumb::class);
+        Blade::component('table', Table::class);
     }
 }

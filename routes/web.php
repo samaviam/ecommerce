@@ -40,4 +40,6 @@ Auth::routes();
 */
 Route::group(['prefix' => '/admin', 'as' => 'admin'], function () {
     Route::view('/dashboard', 'admin.dashboard');
+    Route::view('/products', 'admin.catalog.products')->name('.products');
+    Route::view('/categories', 'admin.catalog.categories')->name('.categories');
 });
