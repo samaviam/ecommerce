@@ -25039,6 +25039,7 @@ dl li {
   vertical-align: middle;
   line-height: 1;
   white-space: nowrap;
+  text-align: center;
   padding: 1.125rem 1.375rem;
 }
 
@@ -25047,8 +25048,8 @@ dl li {
 }
 
 .table td img {
-  width: 36px;
-  height: 36px;
+  width: 75px;
+  height: 75px;
   border-radius: 100%;
 }
 
@@ -30758,6 +30759,11 @@ div.tagsinput span.tag a {
 .rtl #settings-trigger {
   right: auto;
   left: 30px;
+}
+
+.mdi::before,
+.mdi-set {
+	vertical-align: bottom;
 }
 
 @media (max-width: 991px) {
