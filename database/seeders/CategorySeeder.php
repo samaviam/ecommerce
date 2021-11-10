@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Rank;
 
-class RankSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +13,6 @@ class RankSeeder extends Seeder
      */
     public function run()
     {
-        Rank::truncate();
-
-        Rank::create(['name' => __('Admin')]);
+        //
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminProductsController;
+use App\Http\Controllers\Admin\AdminCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,9 @@ Auth::routes();
 */
 Route::group(['prefix' => '/admin', 'as' => 'admin'], function () {
     Route::view('/dashboard', 'admin.dashboard');
-    Route::view('/products', 'admin.catalog.products')->name('.products');
-    Route::view('/categories', 'admin.catalog.categories')->name('.categories');
+
+    Route::group(['as' => '.'], function () {
+        Route::resource('/products', AdminProductsController::class);
+        Route::resource('/categories', AdminCategoriesController::class);
+    });
 });
