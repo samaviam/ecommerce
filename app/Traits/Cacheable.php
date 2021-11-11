@@ -8,15 +8,46 @@ trait Cacheable
 {
     abstract protected static function getCacheName();
 
-    public static function all($columns = ['*'])
+    /**
+     * Paginate the given query.
+     *
+     * @param  int|null  $perPage
+     * @param  array  $columns
+     * @param  string  $pageName
+     * @param  int|null  $page
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
     {
-        return self::caching('all', $columns);
+        $pageNumber = (int) request()->get($pageName) ?: 1;
+
+        return self::caching(
+            'Paginate-' . $perPage . $pageName . $pageNumber . $page,
+            'paginate',
+            $perPage, $columns, $pageName, $page
+        );
     }
 
-    protected function caching($method, ...$parameters)
+    /**
+     * Get all of the models from the database.
+     *
+     * @param  array|mixed  $columns
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public static function all($columns = ['*'])
     {
-        return Cache::rememberForever(self::getCacheName(), function () use ($method, $parameters) {
-            return parent::{$method}(...$parameters);
-        });
+        return self::caching('All-' . implode('.', (array) $columns), 'all', $columns);
+    }
+
+    protected function caching($aliases, $method, ...$parameters)
+    {
+        return Cache::rememberForever(
+            self::getCacheName() . ':' . $aliases,
+            function () use ($method, $parameters) {
+                return parent::{$method}(...$parameters);
+            }
+        );
     }
 }
