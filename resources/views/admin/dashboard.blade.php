@@ -731,7 +731,6 @@
 
 @section('plugin-script')
     <script src="{{ asset('admin/vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('admin/vendors/progressbar.js/progressbar.min.js') }}"></script>
 @endsection
 

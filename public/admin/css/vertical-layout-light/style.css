@@ -25061,6 +25061,14 @@ dl li {
   border-bottom: none;
 }
 
+.table a {
+	text-decoration: none;
+}
+
+.table a:hover {
+	color: unset;
+}
+
 .table.table-borderless {
   border: none;
 }

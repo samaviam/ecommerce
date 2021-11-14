@@ -1,6 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('plugin-style')
+  <link rel="stylesheet" href="{{ asset('admin/vendors/jquery-toast-plugin/jquery.toast.min.css') }}">
 @endsection
 
 @section('content')
@@ -9,10 +10,6 @@
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
-            {{-- <x-table header="{!! json_encode([
-              __('ID'), __('Image'),
-              __('Name'), __('Price'),
-            ]) !!}" rows="{!! json_encode([]) !!}" /> --}}
             <table class="table">
               <thead>
                 <tr>
@@ -29,25 +26,25 @@
                 @foreach ($products as $product)
                   <tr>
                     <td>{{ $product->id }}</td>
-                    <td><img src="{{ asset('images/p') . '/' . $product->id . '/' . $product->cover }}" alt="{{ $product->name }}"></td>
+                    <td><img src="{{ asset('storage/images/p') . '/' . $product->id . '/' . $product->cover }}" alt="{{ $product->name }}"></td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->regular_price }}</td>
                     <td>{{ $product->quantity }}</td>
                     <td>
-                      <span class="badge badge-pill badge-outline-{{ $product->status ? 'success' : 'danger' }}">
+                      <a href="#" class="badge badge-{{ $product->status ? 'success' : 'danger' }}">
                         @if ($product->status)
-                          <i class="mdi mdi-check"></i>
+                          <i class="mdi mdi-check"></i> {{ __('Enable') }}
                         @else
-                          <i class="mdi mdi-close"></i>
+                          <i class="mdi mdi-close"></i> {{ __('Disable') }}
                         @endif
-                      </span>
+                      </a>
                     </td>
                     <td>
                       <div class="btn-group">
                         <button class="btn btn-secondary" type="button"><i class="mdi mdi-pencil"></i> {{ __('Edit') }}</button>
                         <button id="product-{{ $loop->iteration }}" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-haspop="true" aria-expanded="false"></button>
                         <div class="dropdown-menu" aria-labelledby="product-{{ $loop->iteration }}">
-                          <a href="#" class="dropdown-item"><i class="mdi mdi-delete"></i> {{ __('Delete') }}</a>
+                          <button class="dropdown-item" onclick="remove('{{ $product->id }}')"><i class="mdi mdi-delete"></i> {{ __('Delete') }}</button>
                         </div>
                       </div>
                     </td>
@@ -62,6 +59,12 @@
   </div>
 @endsection
 
+@section('plugin-script')
+  <script src="{{ asset('admin/vendors/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
+@endsection
+
 @section('script')
-    <script src="{{ asset('admin/js/data-table.js') }}"></script>
+  <script src="{{ asset('admin/js/toastDemo.js') }}"></script>
+  <script src="{{ asset('admin/js/desktop-notification.js') }}"></script>
+  <script src="{{ asset('admin/js/data-table.js') }}"></script>
 @endsection
