@@ -10,6 +10,9 @@ class Product extends Model
 {
     use HasFactory, cacheable;
 
+    /**
+     * @return string
+     */
     protected static function getCacheName()
     {
         return 'Product';

@@ -6,7 +6,26 @@ use Illuminate\Support\Facades\Cache;
 
 trait Cacheable
 {
+    /**
+     * @return string
+     */
     abstract protected static function getCacheName();
+
+    /**
+     * Find a model by its primary key.
+     *
+     * @param  mixed  $id
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
+     */
+    public function find($id, $columns = ['*'])
+    {
+        return self::caching(
+            'Find-' . $id . '(' . implode(',', (array) $columns) . ')',
+            'find',
+            $id, $columns
+        );
+    }
 
     /**
      * Paginate the given query.

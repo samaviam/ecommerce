@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -83,6 +84,10 @@ class AdminProductsController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        Cache::flush();
+
+        return response([__('Success'), __('The product was successfully removed.')]);
     }
 }
