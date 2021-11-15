@@ -6,7 +6,7 @@ $.ajaxSetup({
 });
 
 //-------- Admin Products --------//
-remove = id => {
+window.remove = id => {
     var el = event.target;
     $.ajax({
         method: 'POST',
@@ -27,4 +27,13 @@ remove = id => {
             });
         }
     });
+}
+
+//-------- Admin Create Product --------//
+window.toSlug = function (el, input) {
+    let str = $(el).val();
+    str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+    str = str.replace(/^\s+|\s+$/gm, '');
+    str = str.replace(/\s+/g, '-');
+    $(input).val(str);
 }

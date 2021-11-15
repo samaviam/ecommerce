@@ -18,7 +18,7 @@ $.ajaxSetup({
   }
 }); //-------- Admin Products --------//
 
-remove = function remove(id) {
+window.remove = function (id) {
   var el = event.target;
   $.ajax({
     method: 'POST',
@@ -41,7 +41,17 @@ remove = function remove(id) {
       });
     }
   });
+}; //-------- Admin Create Product --------//
+
+
+window.toSlug = function (el, input) {
+  var str = $(el).val();
+  str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+  str = str.replace(/^\s+|\s+$/gm, '');
+  str = str.replace(/\s+/g, '-');
+  $(input).val(str);
 };
+
 
 /***/ }),
 
