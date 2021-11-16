@@ -1,5 +1,7 @@
 @extends('admin.layouts.main')
 
+@section('title', __('Products'))
+
 @section('plugin-style')
   <link rel="stylesheet" href="{{ asset('admin/vendors/jquery-toast-plugin/jquery.toast.min.css') }}">
 @endsection
@@ -7,6 +9,11 @@
 @section('content')
   <div class="card">
     <div class="card-body">
+      <div class="card-title">
+        <a href="{{ route('admin.products.create') }}" class="btn btn-primary btn-rounded btn-icon">
+          <i class="ti-plus"></i> {{ __('New product') }}
+        </a>
+      </div>
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
@@ -41,7 +48,7 @@
                     </td>
                     <td>
                       <div class="btn-group">
-                        <button class="btn btn-secondary" type="button"><i class="mdi mdi-pencil"></i> {{ __('Edit') }}</button>
+                        <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-secondary"><i class="mdi mdi-pencil"></i> {{ __('Edit') }}</a>
                         <button id="product-{{ $loop->iteration }}" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-haspop="true" aria-expanded="false"></button>
                         <div class="dropdown-menu" aria-labelledby="product-{{ $loop->iteration }}">
                           <button class="dropdown-item" onclick="remove('{{ $product->id }}')"><i class="mdi mdi-delete"></i> {{ __('Delete') }}</button>

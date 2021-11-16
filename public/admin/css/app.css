@@ -1,3 +1,15 @@
+.card-title .btn {
+  padding: 0.575rem 1.3rem;
+}
+
+.mdi::before, .mdi-set {
+  vertical-align: bottom;
+}
+
+[class^=ti-], [class*=" ti-"] {
+  vertical-align: top;
+}
+
 #spinner {
   position: fixed;
   top: 0;

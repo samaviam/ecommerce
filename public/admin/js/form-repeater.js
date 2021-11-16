@@ -7,9 +7,9 @@
       // defaultValues refer to the value of the input's name attribute.
       // If a default value is not specified for an input, then it will
       // have its value cleared.
-      defaultValues: {
-        'text-input': 'foo'
-      },
+      // defaultValues: {
+        // 'text-input': 'foo'
+      // },
       // (Optional)
       // "show" is called just after an item is added.  The item is hidden
       // at this point.  If a show callback is not given the item will
@@ -32,7 +32,7 @@
       // (Optional)
       // Removes the delete button from the first list item,
       // defaults to false.
-      isFirstItemUndeletable: true
+      isFirstItemUndeletable: false
     })
   });
 })(jQuery);
