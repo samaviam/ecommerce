@@ -30,7 +30,7 @@
         return form.valid();
     },
     onFinished: function (event, currentIndex) {
-        alert("Submitted!");
+        form.submit();
     }
   });
   var validationForm = $("#example-validation-form");
