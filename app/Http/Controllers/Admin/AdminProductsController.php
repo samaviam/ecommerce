@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Cache;
+use App\Http\Requests\Admin\Products\StoreRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -37,9 +38,32 @@ class AdminProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $product = Product::create(
+            $request->safe()->except(['cover', 'images'])
+        );
+
+        $dir = 'images/p/' . $product->id;
+        mkdir(storage_path('app/' . $dir));
+
+        $cover = $this->uploadImage($dir, $request->file('cover'));
+
+        $images = [];
+        foreach ($request->file('images') as $image) {
+            $images[] = $this->uploadImage($dir, $image);
+        }
+
+        $product->fill([
+            'cover' => $cover,
+            'images' => $images,
+        ])->save();
+
+        Cache::flush();
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -89,5 +113,13 @@ class AdminProductsController extends Controller
         Cache::flush();
 
         return response([__('Success'), __('The product was successfully removed.')]);
+    }
+
+    private function uploadImage($dir, $image)
+    {
+        $name = $image->getClientOriginalName();
+        $image->storeAs($dir, $name);
+
+        return $name;
     }
 }
