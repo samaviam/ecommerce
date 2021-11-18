@@ -72,8 +72,8 @@
           <section>
             <h3>{{ __('Other settings') }}</h3>
             <div class="form-check form-switch">
-              <label for="status" class="form-check-label">{{ __('Status') }}</label>
-              <input type="checkbox" name="status" value="{{ old('status') }}" class="form-check-input" role="switch" id="status">
+              <label for="active" class="form-check-label">{{ __('Active') }}</label>
+              <input type="checkbox" name="active" value="{{ old('active') }}" class="form-check-input" role="switch" id="active">
             </div>
             <div class="form-group row">
               <div class="col">
