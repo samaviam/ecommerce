@@ -4,32 +4,43 @@
 
 @section('plugin-style')
   <link rel="stylesheet" href="{{ asset('admin/vendors/dropify/dropify.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('admin/vendors/dropzone/dropzone.css') }}" />
 @endsection
 
 @section('content')
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul class="list-unstyled m-0">
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
   <div class="card">
     <div class="card-body">
-      <form id="create-product-form" action="{{ route('admin.products.store') }}" method="POST">
+      <form id="create-product-form" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <div>
           <h3>{{ __('Basic settings') }}</h3>
           <section>
             <h3>{{ __('Basic settings') }}</h3>
             <div class="form-group">
-              <label>{{ __('Name *') }}</label>
-              <input type="text" name="name" id="product-name" class="form-control required" placeholder="Product name" required="required" onkeyup="toSlug(this, '#product-slug')">
+              <label for="product-name">{{ __('Name *') }}</label>
+              <input type="text" name="name" value="{{ old('name') }}" id="product-name" class="form-control required" placeholder="Product name" required="required" onkeyup="toSlug(this, '#product-slug')">
             </div>
             <div class="form-group">
-              <label>{{ __('Slug *') }}</label>
-              <input type="text" name="slug" id="product-slug" class="form-control required" placeholder="product-name" required="required">
+              <label for="product-slug">{{ __('Slug *') }}</label>
+              <input type="text" name="slug" value="{{ old('slug') }}" id="product-slug" class="form-control required" placeholder="product-name" required="required">
             </div>
             <div class="form-group">
-              <label>{{ __('Cover image *') }}</label>
-              <input type="file" name="cover" class="dropify required" required="required">
+              <label for="cover">{{ __('Cover image *') }}</label>
+              <input type="file" name="cover" value="{{ old('cover') }}" id="cover" class="dropify required" required="required">
               <small id="coverHelp" class="form-text text-muted">{{ __('') }}</small>
             </div>
             <div class="form-group">
-              <label>{{ __('Other images') }}</label>
-              <input type="file" name="images" class="dropify">
+              <label for="otherImg">{{ __('Other images') }}</label>
+              <input type="file" name="images[]" value="{{ old('images') }}" id="otherImg" class="form-control" multiple />
               <small id="imagesHelp" class="form-text text-muted">{{ __('') }}</small>
             </div>
           </section>
@@ -37,20 +48,20 @@
           <section>
             <h3>{{ __('Descriptions') }}</h3>
             <div class="form-group">
-              <label>{{ __('Short description') }}</label>
-              <textarea name="short-description" id="short-description"></textarea>
+              <label for="short-description">{{ __('Short description') }}</label>
+              <textarea name="short-description" value="{{ old('short-description') }}" id="short-description"></textarea>
             </div>
             <div class="form-group">
-              <label>{{ __('Description') }}</label>
-              <textarea name="description" id="description"></textarea>
+              <label for="description">{{ __('Description') }}</label>
+              <textarea name="description" value="{{ old('description') }}" id="description"></textarea>
             </div>
           </section>
           <h3>{{ __('Category') }}</h3>
           <section>
             <h3>{{ __('Category') }}</h3>
             <div class="form-group">
-              <label>{{ __('Category') }}</label>
-              <select class="form-select form-select-sm" aria-label=".form-select-sm">
+              <label for="categories">{{ __('Category') }}</label>
+              <select id="categories" class="form-select form-select-sm" aria-label=".form-select-sm">
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -60,14 +71,25 @@
           <h3>{{ __('Other settings') }}</h3>
           <section>
             <h3>{{ __('Other settings') }}</h3>
+            <div class="form-check form-switch">
+              <label for="status" class="form-check-label">{{ __('Status') }}</label>
+              <input type="checkbox" name="status" value="{{ old('status') }}" class="form-check-input" role="switch" id="status">
+            </div>
             <div class="form-group row">
               <div class="col">
-                <label>{{ __('Price') }}</label>
-                <input type="text" name="price" class="form-control" data-inputmask="'alias': 'currency'" im-insert="true">
+                <label for="price">{{ __('Price') }}</label>
+                <div class="input-group">
+                  <span class="input-group-text">{{ __('$') }}</span>
+                  <input type="text" name="price" value="{{ old('price') }}" id="price" class="form-control" />
+                </div>
               </div>
               <div class="col">
-                <label>{{ __('Reference') }}</label>
-                <input type="text" name="reference" class="form-control">
+                <label for="reference">{{ __('Reference') }}</label>
+                <input type="text" name="reference" value="{{ old('reference') }}" id="reference" class="form-control" />
+              </div>
+              <div class="col">
+                <label for="quantity">{{ __('Quantity') }}</label>
+                <input type="text" name="quantity" value="{{ old('quantity') }}" id="quantity" class="form-control" />
               </div>
             </div>
             <div class="form-group">
@@ -75,7 +97,7 @@
               <div class="repeater">
                 <div data-repeater-list="related-products">
                   <div class="input-group mb-1" data-repeater-item>
-                    <input type="text" name="text-input" class="form-control" placeholder="{{ __('Add related product') }}" />
+                    <input type="text" name="product-name" class="form-control" placeholder="{{ __('Add related product') }}" />
                     <button type="button" class="btn btn-outline-danger" data-repeater-delete>{{ __('Delete') }}</button>
                   </div>
                 </div>
@@ -93,15 +115,15 @@
   <script src="{{ asset('admin/vendors/jquery-steps/jquery.steps.min.js') }}"></script>
   <script src="{{ asset('admin/vendors/jquery-validation/jquery.validate.min.js') }}"></script>
   <script src="{{ asset('admin/vendors/dropify/dropify.min.js') }}"></script>
+  <script src="{{ asset('admin/vendors/dropzone/dropzone.js') }}"></script>
   <script src="{{ asset('admin/vendors/tinymce/tinymce.min.js') }}"></script>
-  <script src="{{ asset('admin/vendors/inputmask/jquery.inputmask.bundle.js') }}"></script>
   <script src="{{ asset('admin/vendors/jquery.repeater/jquery.repeater.min.js') }}"></script>
 @endsection
 
 @section('script')
   <script src="{{ asset('admin/js/wizard.js') }}"></script>
   <script src="{{ asset('admin/js/dropify.js') }}"></script>
+  <script src="{{ asset('admin/js/dropzone.js') }}"></script>
   <script src="{{ asset('admin/js/editor.js') }}"></script>
-  <script src="{{ asset('admin/js/inputmask.js') }}"></script>
   <script src="{{ asset('admin/js/form-repeater.js') }}"></script>
 @endsection
