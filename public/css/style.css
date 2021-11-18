@@ -1821,6 +1821,11 @@ li.menu-item .nav-label.sale-label::before{
     color: #888888;
     font-style: italic;
 }
+.wrap-product-detail .detail-info .reference{
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
 .product .product-info .wrap-price,
 .product-style-2 .product-info .wrap-price{
     display: inline-block;
