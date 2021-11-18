@@ -65,6 +65,9 @@ trait Cacheable
         return Cache::rememberForever(
             self::getCacheName() . ':' . $aliases,
             function () use ($method, $parameters) {
+                if (is_callable($method))
+                    return $method();
+
                 return parent::{$method}(...$parameters);
             }
         );
