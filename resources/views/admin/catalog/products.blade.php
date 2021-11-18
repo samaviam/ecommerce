@@ -25,7 +25,7 @@
                   <th>{{ __('Name') }}</th>
                   <th>{{ __('Price') }}</th>
                   <th>{{ __('Quantity') }}</th>
-                  <th>{{ __('Status') }}</th>
+                  <th>{{ __('Active') }}</th>
                   <th>{{ __('Action') }}</th>
                 </tr>
               </thead>
@@ -38,8 +38,8 @@
                     <td>{{ $product->regular_price }}</td>
                     <td>{{ $product->quantity }}</td>
                     <td>
-                      <a href="#" class="badge badge-{{ $product->status ? 'success' : 'danger' }}">
-                        @if ($product->status)
+                      <a href="#" class="badge badge-{{ $product->active ? 'success' : 'danger' }}">
+                        @if ($product->active)
                           <i class="mdi mdi-check"></i> {{ __('Enable') }}
                         @else
                           <i class="mdi mdi-close"></i> {{ __('Disable') }}
