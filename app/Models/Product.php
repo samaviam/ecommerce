@@ -16,8 +16,8 @@ class Product extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name', 'slug', 'cover', 'images', 'quantity',
-        'regular_price', 'short_description', 'description', 'status',
+        'name', 'slug', 'cover', 'images', 'quantity', 'regular_price',
+        'reference', 'short_description', 'description', 'status',
     ];
 
     /**
@@ -26,5 +26,24 @@ class Product extends Model
     protected static function getCacheName()
     {
         return 'Product';
+    }
+
+    public function scopeAllActive($query)
+    {
+        return $this->caching('all-active', function () use ($query) {
+            return $query->where('active', true)->get();
+        });
+    }
+
+    public function scopeBySlug($query, $slug)
+    {
+        return $this->caching('slug-' . $slug, function () use ($query, $slug) {
+            return $query->where('slug', $slug)->firstOrFail();
+        });
+    }
+
+    public function scopePopulars($query)
+    {
+        return [];
     }
 }

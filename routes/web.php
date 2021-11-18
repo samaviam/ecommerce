@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminCategoriesController;
 
@@ -23,10 +24,10 @@ use App\Http\Controllers\Admin\AdminCategoriesController;
 Route::view('/', 'index')->name('home');
 Route::view('/washlist', 'wishlist')->name('wishlist');
 Route::view('/cart', 'cart')->name('cart');
-Route::view('/shop', 'shop')->name('shop');
+Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
 Route::view('/about-us', 'about-us')->name('about-us');
 Route::view('/contact-us', 'contact-us')->name('contact-us');
-Route::view('/product/{aliases?}', 'product')->name('product');
+Route::get('/product/{slug}', [FrontController::class, 'product'])->name('product');
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::view('/', 'customer.dashboard');
