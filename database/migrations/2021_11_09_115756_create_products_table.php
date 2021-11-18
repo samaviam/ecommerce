@@ -20,11 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->string('cover');
             $table->json('images');
+            $table->string('reference');
             $table->unsignedInteger('quantity');
             $table->unsignedInteger('regular_price');
             $table->text('short_description');
             $table->text('description');
-            $table->boolean('status')->default(false);
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }

@@ -21,11 +21,12 @@ class ProductFactory extends Factory
             'slug' => Str::slug($name),
             'cover' => '',
             'images' => [],
+            'reference' => 'ref-' . $this->faker->numberBetween(0000, 9999),
             'quantity' => $this->faker->numberBetween(100, 500),
             'regular_price' => $this->faker->numberBetween(10, 600),
             'short_description' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'status' => $this->faker->boolean(),
+            'active' => $this->faker->boolean(),
             'updated_at' => $this->faker->dateTime(),
             'created_at' => $this->faker->dateTime(),
         ];

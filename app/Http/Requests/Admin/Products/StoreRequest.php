@@ -33,7 +33,7 @@ class StoreRequest extends FormRequest
             'regular_price' => 'required|string',
             'short_description' => 'string',
             'description' => 'string',
-            'status' => 'required|boolean',
+            'active' => 'required|boolean',
         ];
     }
 
@@ -48,7 +48,7 @@ class StoreRequest extends FormRequest
             'slug' => Str::slug($this->slug),
             'regular_price' => $this->input('price'),
             'short_description' => $this->input('short-description'),
-            'status' => (bool) $this->input('status'),
+            'active' => $this->has('active'),
         ]);
     }
 }
