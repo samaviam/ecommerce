@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 use Cart;
 
 class CartController extends Controller
@@ -37,19 +38,26 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'product-id' => 'required|string',
+            'product-quantity' => 'required|integer',
+        ]);
+
+        $product = Product::findOrFail($request->input('product-id'));
+
         Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => $product->regular_price,
+            'quantity' => $request->input('product-quantity'),
             'attributes' => [
-                'image' => $request->image,
+                'image' => $product->image,
             ],
         ]);
 
-        session()->flash('success', __('Product is Added to Cart Successfully!'));
+        $total = Cart::getTotalQuantity();
 
-        return redirect()->route('cart');
+        return response()->json(compact('total'));
     }
 
     /**
