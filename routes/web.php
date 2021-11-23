@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminCategoriesController;
 
@@ -21,13 +22,14 @@ use App\Http\Controllers\Admin\AdminCategoriesController;
 | Front Routes
 |--------------------------------------------------------------------------
 */
-Route::view('/', 'index')->name('home');
-Route::view('/washlist', 'wishlist')->name('wishlist');
-Route::view('/cart', 'cart')->name('cart');
+Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
-Route::view('/about-us', 'about-us')->name('about-us');
-Route::view('/contact-us', 'contact-us')->name('contact-us');
+Route::get('/about-us', [FrontController::class, 'aboutUs'])->name('about-us');
+Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contact-us');
 Route::get('/product/{slug}', [FrontController::class, 'product'])->name('product');
+Route::get('/washlist', [FrontController::class, 'wishlist'])->name('wishlist');
+Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
+Route::resource('/cart', CartController::class);
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::view('/', 'customer.dashboard');

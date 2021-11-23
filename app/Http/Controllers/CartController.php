@@ -15,9 +15,13 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cart = Cart::getContent();
+        $carts = Cart::getContent();
 
-        return view('cart', compact('cart'));
+        if ($carts->isEmpty()) {
+            return view('checkout.cart-empty');
+        }
+
+        return view('checkout.cart', compact('carts'));
     }
 
     /**
@@ -51,7 +55,8 @@ class CartController extends Controller
             'price' => $product->regular_price,
             'quantity' => $request->input('product-quantity'),
             'attributes' => [
-                'image' => $product->image,
+                'slug' => $product->slug,
+                'image' => $product->cover,
             ],
         ]);
 
