@@ -50,10 +50,10 @@
                             </a>
                         </div>
                         <div class="wrap-icon-section minicart">
-                            <a href="{{ route('cart') }}" class="link-direction">
+                            <a href="{{ route('cart.index') }}" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    <span class="index">4 items</span>
+                                    <span class="index"><span>{{ Cart::getTotalQuantity() }}</span> items</span>
                                     <span class="title">CART</span>
                                 </div>
                             </a>
