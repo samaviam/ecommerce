@@ -46,21 +46,28 @@
                             <div class="stock-info in-stock">
                                 <p class="availability">{{ __('Availability:') }} <b>{{ __($product->quantity ? 'In Stock' : 'Out Stock') }}</b></p>
                             </div>
-                            <div class="quantity">
-                            	<span>{{ __('Quantity:') }}</span>
-								<div class="quantity-input">
-									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" >
-									<a class="btn btn-reduce" href="#"></a>
-									<a class="btn btn-increase" href="#"></a>
+							<form id="add-to-cart-form" action="{{ route('cart.store') }}" method="POST">
+								@csrf
+								<input type="hidden" name="product-id" value="{{ $product->id }}" >
+                            	<div class="quantity">
+                            		<span>{{ __('Quantity:') }}</span>
+									<div class="quantity-input">
+										<input type="text" name="product-quantity" value="1" data-max="120" pattern="[0-9]*" >
+										<a class="btn btn-reduce" href="#"></a>
+										<a class="btn btn-increase" href="#"></a>
+									</div>
 								</div>
-							</div>
-							<div class="wrap-butons">
-								<a href="#" class="btn add-to-cart">{{ __('Add to Cart') }}</a>
-                                <div class="wrap-btn">
-                                    <a href="#" class="btn btn-compare">{{ __('Add Compare') }}</a>
-                                    <a href="#" class="btn btn-wishlist">{{ __('Add Wishlist') }}</a>
-                                </div>
-							</div>
+								<div class="wrap-butons">
+									<button class="btn add-to-cart">
+										{{ __('Add to Cart') }}
+										<span {!! Cart::has($product->id) ? 'style="display: flex;"' : '' !!}><i class="fa fa-check"></i></span>
+									</button>
+                            	    <div class="wrap-btn">
+                            	        <a href="#" class="btn btn-compare">{{ __('Add Compare') }}</a>
+                            	        <a href="#" class="btn btn-wishlist">{{ __('Add Wishlist') }}</a>
+                            	    </div>
+								</div>
+							</form>
 						</div>
 						<div class="advance-info">
 							<div class="tab-control normal">
