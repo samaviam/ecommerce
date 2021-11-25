@@ -127,12 +127,10 @@ class CartController extends Controller
         return response()->json(compact('quantity', 'subtotal'));
     }
 
-    public function destroyAll()
+    public function clear()
     {
         Cart::clear();
 
-        session()->flash('success', __('All Item Cart Clear Successfully!'));
-
-        return redirect()->route('cart');
+        return redirect()->route('cart.index');
     }
 }

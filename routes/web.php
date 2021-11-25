@@ -29,6 +29,7 @@ Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contact-
 Route::get('/product/{slug}', [FrontController::class, 'product'])->name('product');
 Route::get('/washlist', [FrontController::class, 'wishlist'])->name('wishlist');
 Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::resource('/cart', CartController::class);
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard', 'middleware' => 'auth'], function () {
