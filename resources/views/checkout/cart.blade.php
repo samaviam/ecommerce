@@ -38,10 +38,12 @@
 								</div>
 								<div class="price-field sub-total"><p class="price">{{ __('$:price', ['price' => $subTotal]) }}</p></div>
 								<div class="delete">
-									<a href="#" class="btn btn-delete" title="">
-										<span>{{ __('Delete from your cart') }}</span>
-										<i class="fa fa-times-circle" aria-hidden="true"></i>
-									</a>
+									<form class="cart-item-delete" action="{{ route('cart.destroy', ['cart' => $cart->id]) }}">
+										<button class="btn btn-delete">
+											<span>{{ __('Delete from your cart') }}</span>
+											<i class="fa fa-times-circle" aria-hidden="true"></i>
+										</button>
+									</form>
 								</div>
 							</li>
 						@endforeach
@@ -50,7 +52,7 @@
 				<div class="summary">
 					<div class="order-summary">
 						<h4 class="title-box">Order Summary</h4>
-						<p class="summary-info"><span class="title">Subtotal</span><b class="index">{{ __('$:price', ['price' => $total]) }}</b></p>
+						<p class="summary-info sub-total-info"><span class="title">Subtotal</span><b class="index">{{ __('$:price', ['price' => $total]) }}</b></p>
 						<p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
 						<p class="summary-info total-info "><span class="title">Total</span><b class="index">{{ __('$:price', ['price' => $total]) }}</b></p>
 					</div>

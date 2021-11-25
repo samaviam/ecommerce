@@ -2,18 +2,22 @@
     border-color: #ff2832 !important;
 }
 
-.add-to-cart span {
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    justify-content: center;
-    align-items: center;
-    width: 24px;
-    height: 24px;
-    background-color: #ff2832;
-    color: #fff;
-    border-radius: 100%;
+.add-to-cart {
+    position: relative;
+
+    span {
+        display: none;
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        background-color: #ff2832;
+        color: #fff;
+        border-radius: 100%;
+    }
 }
 
 .empty-cart {
@@ -41,16 +45,6 @@
     }
 }
 
-#oval, #plus, #diamond, #bubble-rounded {
-    animation: plopp 4s ease-out infinite;
-
-    @for $i from 1 through 16 {
-        &:nth-child(#{$i}) {
-            animation-delay: -240ms * $i;
-        }
-    }
-}
-
 #bg-line {
     &:nth-child(2) {
         fill-opacity: 0.3;
@@ -58,17 +52,5 @@
 
     &:nth-child(3) {
         fill-opacity: 0.4;
-    }
-}
-
-@keyframes plopp {
-    0% {
-        transform: translate(0, 0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translate(0, -10px);
-        opacity: 0;
     }
 }
