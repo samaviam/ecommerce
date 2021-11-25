@@ -19,7 +19,7 @@
     		this.mercado_toggle_slide_menu();
     		this.mercado_price_range();
     		this.mercado_price_quantity();
-    		this.mercado_remove_product_in_cart();
+    		// this.mercado_remove_product_in_cart();
     		this.mercado_product_slider();
     		this.mercado_toggle_vertical_main_menu();
             this.mercado_sticky_menu();
@@ -415,14 +415,14 @@
 			}
 		},
 
-		mercado_remove_product_in_cart: function(){
+		/*mercado_remove_product_in_cart: function(){
 			if($(".products-cart .pr-cart-item").length > 0){
 				$(document).on('click', '.pr-cart-item .delete .btn-delete', function(event) {
 					event.preventDefault();
 					$(this).closest('.pr-cart-item').remove();
 				});
 			}
-		},
+		},*/
 
         mercado_toggle_vertical_main_menu: function () {
             if($(".header.header-toggle .vertical-menu-toggle").length){

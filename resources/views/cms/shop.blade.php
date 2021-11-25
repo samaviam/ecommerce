@@ -58,7 +58,13 @@
 										<div class="product-info">
 											<a href="{{ route('product', ['slug' => $product->slug]) }}" class="product-name"><span>{{ $product->name }}</span></a>
 											<div class="wrap-price"><span class="product-price">{{ __('$:price', ['price' => $product->regular_price]) }}</span></div>
-											<a href="#" class="btn add-to-cart">{{ __('Add To Cart') }}</a>
+											<form class="add-to-cart-form" action="{{ route('cart.store') }}" method="POST">
+												<input type="hidden" name="product-id" value="{{ $product->id }}" >
+												<button class="btn add-to-cart">
+													{{ __('Add to Cart') }}
+													<span {!! Cart::has($product->id) ? 'style="display: flex;"' : '' !!}><i class="fa fa-check"></i></span>
+												</button>
+											</form>
 										</div>
 									</div>
 								</li>

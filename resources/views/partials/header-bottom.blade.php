@@ -20,9 +20,6 @@
                     <a href="{{ route('shop') }}" class="link-term mercado-item-title">Shop</a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('cart.index') }}" class="link-term mercado-item-title">Cart</a>
-                </li>
-                <li class="menu-item">
                     <a href="{{ route('about-us') }}" class="link-term mercado-item-title">About Us</a>
                 </li>
                 <li class="menu-item">

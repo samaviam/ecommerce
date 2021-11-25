@@ -46,8 +46,7 @@
                             <div class="stock-info in-stock">
                                 <p class="availability">{{ __('Availability:') }} <b>{{ __($product->quantity ? 'In Stock' : 'Out Stock') }}</b></p>
                             </div>
-							<form id="add-to-cart-form" action="{{ route('cart.store') }}" method="POST">
-								@csrf
+							<form class="add-to-cart-form" action="{{ route('cart.store') }}" method="POST">
 								<input type="hidden" name="product-id" value="{{ $product->id }}" >
                             	<div class="quantity">
                             		<span>{{ __('Quantity:') }}</span>
