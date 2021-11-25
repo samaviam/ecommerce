@@ -44,7 +44,7 @@ class CartController extends Controller
     {
         $request->validate([
             'product-id' => 'required|string',
-            'product-quantity' => 'required|integer',
+            'product-quantity' => 'integer',
         ]);
 
         $product = Product::findOrFail($request->input('product-id'));
@@ -53,7 +53,7 @@ class CartController extends Controller
             'id' => $product->id,
             'name' => $product->name,
             'price' => $product->regular_price,
-            'quantity' => $request->input('product-quantity'),
+            'quantity' => $request->input('product-quantity') ?? 1,
             'attributes' => [
                 'slug' => $product->slug,
                 'image' => $product->cover,
@@ -121,9 +121,10 @@ class CartController extends Controller
     {
         Cart::remove($id);
 
-        session()->flash('success', __('Item Cart Remove Successfully!'));
+        $quantity = Cart::getTotalQuantity();
+        $subtotal = '$' . Cart::getSubTotal();
 
-        return redirect()->route('cart');
+        return response()->json(compact('quantity', 'subtotal'));
     }
 
     public function destroyAll()
