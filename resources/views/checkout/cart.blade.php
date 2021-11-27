@@ -21,7 +21,7 @@
 								$subTotal = $cart->price * $cart->quantity;
 								$total += $subTotal;
 							@endphp
-							<li class="pr-cart-item">
+							<li class="pr-cart-item" data-item-id="{{ $cart->id }}">
 								<div class="product-image">
 									<figure><img src="{{ asset('storage/images/p/' . $cart->id . '/' . $cart->attributes->image) }}" alt="{{ $cart->name }}"></figure>
 								</div>
