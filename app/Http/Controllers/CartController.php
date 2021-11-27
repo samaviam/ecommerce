@@ -60,9 +60,7 @@ class CartController extends Controller
             ],
         ]);
 
-        $total = Cart::getTotalQuantity();
-
-        return response()->json(compact('total'));
+        return response()->json(['total' => Cart::getTotalQuantity()]);
     }
 
     /**
@@ -106,9 +104,11 @@ class CartController extends Controller
             ]
         );
 
-        session()->flash('success', __('Item Cart is Updated Successfully!'));
-
-        return redirect()->route('cart');
+        return response()->json([
+            'quantity' => Cart::getTotalQuantity(),
+            'total' => '$' . Cart::get($id)->getPriceSum(),
+            'subtotal' => '$' . Cart::getSubTotal(),
+        ]);
     }
 
     /**
@@ -121,10 +121,10 @@ class CartController extends Controller
     {
         Cart::remove($id);
 
-        $quantity = Cart::getTotalQuantity();
-        $subtotal = '$' . Cart::getSubTotal();
-
-        return response()->json(compact('quantity', 'subtotal'));
+        return response()->json([
+            'quantity' => Cart::getTotalQuantity(),
+            'subtotal' => '$' . Cart::getSubTotal(),
+        ]);
     }
 
     public function clear()
