@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-$('.add-to-cart-form').submit(function (e) {
+$('body').on('submit', '.add-to-cart-form', function (e) {
     e.preventDefault();
     var form = $(this);
     axios({
@@ -40,7 +40,7 @@ $('.btn-increase, .btn-reduce').click(function () {
         id = $this.parents('.pr-cart-item').data('item-id'),
         qntInput = $this.siblings('input[name="product-quatity"]'),
         currentVal = parseInt(qntInput.val());
-    
+
     qntInput.val($this.hasClass('btn-increase') ? currentVal + 1 : currentVal > 1 ? currentVal - 1 : currentVal);
 
     axios({
@@ -54,5 +54,17 @@ $('.btn-increase, .btn-reduce').click(function () {
         $('.pr-cart-item[data-item-id="' + id + '"] .sub-total .price').text(data.total);
         $('.minicart .index span').text(data.quantity);
         $('.sub-total-info .index, .total-info .index').text(data.subtotal);
+    });
+});
+
+$('select[name="order-by"], select[name="per-page"]').chosen().change(function () {
+    var name = $(this).attr('name'),
+        value = $(this).val();
+
+    axios({
+        method: 'get',
+        url: location.href + `?${name}=${value}`,
+    }).then(function ({data}) {
+        $('.products.row').html(data);
     });
 });
