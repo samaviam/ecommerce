@@ -56,3 +56,15 @@ $('.btn-increase, .btn-reduce').click(function () {
         $('.sub-total-info .index, .total-info .index').text(data.subtotal);
     });
 });
+
+$('select[name="order-by"], select[name="per-page"]').chosen().change(function () {
+    var name = $(this).attr('name'),
+        value = $(this).val();
+
+    axios({
+        method: 'get',
+        url: location.href + `?${name}=${value}`,
+    }).then(function ({data}) {
+        $('.products.row').html(data);
+    });
+});

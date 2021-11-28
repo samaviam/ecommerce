@@ -19,17 +19,14 @@
 						<h1 class="shop-title">Digital & Electronics</h1>
 						<div class="wrap-right">
 							<div class="sort-item orderby ">
-								<select name="orderby" class="use-chosen" >
-									<option value="menu_order" selected="selected">Default sorting</option>
-									<option value="popularity">Sort by popularity</option>
-									<option value="rating">Sort by average rating</option>
-									<option value="date">Sort by newness</option>
+								<select name="order-by" class="except-chosen" >
+									<option value="date" selected="selected">Sort by newness</option>
 									<option value="price">Sort by price: low to high</option>
 									<option value="price-desc">Sort by price: high to low</option>
 								</select>
 							</div>
 							<div class="sort-item product-per-page">
-								<select name="post-per-page" class="use-chosen" >
+								<select name="per-page" class="except-chosen" >
 									<option value="12" selected="selected">12 per page</option>
 									<option value="16">16 per page</option>
 									<option value="18">18 per page</option>
@@ -45,31 +42,8 @@
 							</div>
 						</div>
 					</div><!--end wrap shop control-->
-					<div class="row">
-						<ul class="product-list grid-products equal-container">
-							@foreach ($products as $product)
-								<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
-									<div class="product product-style-3 equal-elem">
-										<div class="product-thumnail">
-											<a href="{{ route('product', ['slug' => $product->slug]) }}" title="{{ $product->name }}">
-												<figure><img src="{{ asset('storage/images/p/' . $product->id . '/' . $product->cover) }}" alt="{{ $product->name }}"></figure>
-											</a>
-										</div>
-										<div class="product-info">
-											<a href="{{ route('product', ['slug' => $product->slug]) }}" class="product-name"><span>{{ $product->name }}</span></a>
-											<div class="wrap-price"><span class="product-price">{{ __('$:price', ['price' => $product->regular_price]) }}</span></div>
-											<form class="add-to-cart-form" action="{{ route('cart.store') }}" method="POST">
-												<input type="hidden" name="product-id" value="{{ $product->id }}" >
-												<button class="btn add-to-cart">
-													{{ __('Add to Cart') }}
-													<span {!! Cart::has($product->id) ? 'style="display: flex;"' : '' !!}><i class="fa fa-check"></i></span>
-												</button>
-											</form>
-										</div>
-									</div>
-								</li>
-							@endforeach
-						</ul>
+					<div class="products row">
+						@include('catalog.products', compact('products'))
 					</div>
 					<div class="wrap-pagination-info">
 						<ul class="page-numbers">
