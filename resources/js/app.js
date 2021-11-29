@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-$('.add-to-cart-form').submit(function (e) {
+$('body').on('submit', '.add-to-cart-form', function (e) {
     e.preventDefault();
     var form = $(this);
     axios({
@@ -40,7 +40,7 @@ $('.btn-increase, .btn-reduce').click(function () {
         id = $this.parents('.pr-cart-item').data('item-id'),
         qntInput = $this.siblings('input[name="product-quatity"]'),
         currentVal = parseInt(qntInput.val());
-    
+
     qntInput.val($this.hasClass('btn-increase') ? currentVal + 1 : currentVal > 1 ? currentVal - 1 : currentVal);
 
     axios({
