@@ -32,7 +32,7 @@
                   <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
-                    <td>{{ $category->description }}</td>
+                    <td>{!! strip_tags($category->description) !!}</td>
                     <td>
                       <a href="#" class="badge badge-{{ $category->active ? 'success' : 'danger' }}">
                         @if ($category->active)
