@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\Categories\StoreRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class AdminCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.catalog.category.create');
     }
 
     /**
@@ -36,9 +37,13 @@ class AdminCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        Category::create($request->validated());
+
+        Cache::flush();
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**
