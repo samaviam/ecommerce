@@ -1,6 +1,6 @@
 (function($) {
   'use strict';
-  var form = $("#create-product-form");
+  var form = $("#create-product-form, #create-category-form");
   form.children("div").steps({
     headerTag: "h3",
     bodyTag: "section",
