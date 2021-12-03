@@ -17,6 +17,7 @@ class ProductFactory extends Factory
         $name = $this->faker->unique->words(4, true);
 
         return [
+            'category_id' => '',
             'name' => $name,
             'slug' => Str::slug($name),
             'cover' => '',

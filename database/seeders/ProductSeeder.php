@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\Category;
 use File;
 
 class ProductSeeder extends Seeder
@@ -17,11 +18,13 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+        $categories = Category::all('id');
+
         Product::truncate();
 
         Product::factory()
             ->count(5)
-            ->afterCreating(function ($product) {
+            ->afterCreating(function ($product) use($categories) {
                 $id = $product->id;
                 $pDir = 'app/images/p/' . $id;
                 $images = [];
@@ -44,7 +47,7 @@ class ProductSeeder extends Seeder
                     );
                 }
 
-                $product->fill($images)->save();
+                $product->fill(array_merge(['category_id' => $categories->random()->id], $images))->save();
 
                 $this->times++;
             })

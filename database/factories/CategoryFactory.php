@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CategoryFactory extends Factory
 {
@@ -13,8 +14,17 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $description = $this->faker->paragraph();
+
         return [
-            //
+            'name' => '',
+            'slug' => '',
+            'description' => $description,
+            'meta_title' => $this->faker->boolean() ? '' : $this->faker->unique->words(4, true),
+            'meta_description' => $this->faker->boolean() ? $description : $this->faker->paragraph(),
+            'active' => $this->faker->boolean(),
+            'updated_at' => $this->faker->dateTime(),
+            'created_at' => $this->faker->dateTime(),
         ];
     }
 }
