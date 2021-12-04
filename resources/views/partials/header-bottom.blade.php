@@ -19,6 +19,11 @@
                 <li class="menu-item">
                     <a href="{{ route('shop') }}" class="link-term mercado-item-title">Shop</a>
                 </li>
+                @foreach ($headerCategories as $category)
+                    <li class="menu-item">
+                        <a href="{{ route('category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                    </li>
+                @endforeach
                 <li class="menu-item">
                     <a href="{{ route('about-us') }}" class="link-term mercado-item-title">About Us</a>
                 </li>
