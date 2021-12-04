@@ -7,6 +7,7 @@
 		<div class="container">
 			<x-breadcrumb previous-pages="{!! json_encode([
                 route('home') => __('Home'),
+				route('category', ['slug' => $category->slug]) => $category->name,
             ]) !!}" page-name="{{ $product->name }}" />
 			<div class="row">
 				<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
