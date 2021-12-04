@@ -20,6 +20,11 @@ class Product extends Model
         'reference', 'short_description', 'description', 'active',
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     /**
      * @return string
      */

@@ -20,7 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->string('description');
             $table->string('meta_title');
             $table->string('meta_description');
-            $table->boolean('active')->default(false);
+            $table->boolean('show');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
