@@ -1,5 +1,21 @@
 require('./bootstrap');
 
+$('#search').keyup(function () {
+    var search = $(this).val();
+    if (search) {
+      axios({
+          method: 'get',
+          url: location.origin + '/search?product=' + search,
+      }).then(function ({data}) {
+          $('#suggestions').html(data).show();
+      });
+    }
+});
+
+$('#search').blur(function () {
+    $('#suggestions').hide().html('');
+});
+
 $('body').on('submit', '.add-to-cart-form', function (e) {
     e.preventDefault();
     var form = $(this);
