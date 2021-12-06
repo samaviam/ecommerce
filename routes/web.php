@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\AdminCategoriesController;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/search', [FrontController::class, 'search'])->name('search');
 Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
 Route::get('/about-us', [FrontController::class, 'aboutUs'])->name('about-us');
 Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contact-us');

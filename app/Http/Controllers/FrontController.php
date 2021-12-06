@@ -18,6 +18,17 @@ class FrontController extends Controller
         return view('index');
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->get('product');
+        $products = Product::with('category')
+            ->where('name', 'like', '%' . $search . '%')
+            ->orWhere('reference', 'like', '%' . $search . '%')
+            ->limit(5);
+
+        return view('partials.search-item', compact('products'));
+    }
+
     public function shop(Request $request)
     {
         $orderBy = $request->get('order-by', 'date');

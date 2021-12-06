@@ -28,6 +28,13 @@ class Category extends Model
         return 'Category';
     }
 
+    public function scopeAllActive($query)
+    {
+        return $this->caching('all-active', function () use ($query) {
+            return $query->where('active', true)->get();
+        });
+    }
+
     public function scopeBySlug($query, $slug)
     {
         return $this->caching('slug-' . $slug, function () use ($query, $slug) {

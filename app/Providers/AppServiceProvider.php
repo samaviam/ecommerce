@@ -29,7 +29,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (!$this->app->runningInConsole()) {
-            View::share('headerCategories', Category::show());
+            View::share([
+                'searchCate' => Category::allActive(),
+                'navCate' => Category::show(),
+            ]);
         }
 
         $this->registerComponents();
