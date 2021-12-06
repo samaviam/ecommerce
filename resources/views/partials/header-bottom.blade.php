@@ -19,7 +19,7 @@
                 <li class="menu-item">
                     <a href="{{ route('shop') }}" class="link-term mercado-item-title">Shop</a>
                 </li>
-                @foreach ($headerCategories as $category)
+                @foreach ($navCate as $category)
                     <li class="menu-item">
                         <a href="{{ route('category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
                     </li>
