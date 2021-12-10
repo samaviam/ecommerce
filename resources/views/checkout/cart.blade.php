@@ -26,7 +26,7 @@
 									<figure><img src="{{ asset('storage/images/p/' . $cart->id . '/' . $cart->attributes->image) }}" alt="{{ $cart->name }}"></figure>
 								</div>
 								<div class="product-name">
-									<a class="link-to-product" href="{{ route('product', ['slug' => $cart->attributes->slug]) }}">{{ $cart->name }}</a>
+									<a class="link-to-product" href="{{ route('product', ['category' => $cart->attributes->category, 'slug' => $cart->attributes->slug]) }}">{{ $cart->name }}</a>
 								</div>
 								<div class="price-field produtc-price"><p class="price">{{ __('$:price', ['price' => $cart->price]) }}</p></div>
 								<div class="quantity">

@@ -15,10 +15,15 @@
             </div>
             <div class="row">
                 <ul class="product-list equal-container">
-                    <li class="col-lg-3 col-sm-4 col-xs-6 ">
+                    @foreach ($products as $product)
+                        <li class="col-lg-3 col-sm-4 col-xs-6">
+                            @include('catalog.product-block', compact('product'))
+                        </li>
+                    @endforeach
+                    {{-- <li class="col-lg-3 col-sm-4 col-xs-6 ">
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                <a href="{{ route('product', ['category' => 'b', 'slug' => 'a']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                     <figure><img src="{{ asset('images/products/digital_20.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
@@ -32,7 +37,7 @@
                     <li class="col-lg-3 col-sm-4 col-xs-6 ">
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                <a href="{{ route('product', ['category' => 'b', 'slug' => 'a']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                     <figure><img src="{{ asset('images/products/digital_22.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
@@ -46,7 +51,7 @@
                     <li class="col-lg-3 col-sm-4 col-xs-6 ">
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                <a href="{{ route('product', ['category' => 'b', 'slug' => 'a']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                     <figure><img src="{{ asset('images/products/digital_10.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
@@ -60,7 +65,7 @@
                     <li class="col-lg-3 col-sm-4 col-xs-6 ">
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                <a href="{{ route('product', ['category' => 'b', 'slug' => 'a']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                     <figure><img src="{{ asset('images/products/digital_01.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
@@ -74,7 +79,7 @@
                     <li class="col-lg-3 col-sm-4 col-xs-6 ">
                         <div class="product product-style-3 equal-elem ">
                             <div class="product-thumnail">
-                                <a href="{{ route('product', ['aliases' => '']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                <a href="{{ route('product', ['category' => 'b', 'slug' => 'a']) }}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                     <figure><img src="{{ asset('images/products/digital_21.webp') }}" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
                                 </a>
                             </div>
@@ -84,7 +89,7 @@
                                 <a href="#" class="btn add-to-cart">Add To Cart</a>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>

@@ -7,7 +7,7 @@
 		<div class="container">
 			<x-breadcrumb previous-pages="{!! json_encode([
                 route('home') => __('Home'),
-            ]) !!}" page-name="{!! __('Cart') !!}" />
+            ]) !!}" page-name="{!! __('Shop') !!}" />
 			<div class="row">
 				<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
 					<div class="banner-shop">
