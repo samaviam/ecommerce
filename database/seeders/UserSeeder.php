@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
         // Add an Admin
         User::create([
             'rank_id' => Rank::first()->id,
+            'product_ids' => [],
             'name' => env('ADMIN_NAME', 'admin'),
             'email' => env('ADMIN_EMAIL', 'admin@admin.com'),
             'email_verified_at' => now(),

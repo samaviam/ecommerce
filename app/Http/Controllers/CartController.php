@@ -47,7 +47,7 @@ class CartController extends Controller
             'product-quantity' => 'integer',
         ]);
 
-        $product = Product::findOrFail($request->input('product-id'));
+        $product = Product::with('category')->findOrFail($request->input('product-id'));
 
         Cart::add([
             'id' => $product->id,
@@ -57,6 +57,7 @@ class CartController extends Controller
             'attributes' => [
                 'slug' => $product->slug,
                 'image' => $product->cover,
+                'category' => $product->category->slug,
             ],
         ]);
 

@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'product_ids',
         'name',
         'email',
         'password',
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function rank()
     {
         return $this->belongsTo(Rank::class);
+    }
+
+    public function wishes()
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

@@ -18,6 +18,7 @@ class ProductFactory extends Factory
 
         return [
             'category_id' => '',
+            'user_ids' => [],
             'name' => $name,
             'slug' => Str::slug($name),
             'cover' => '',

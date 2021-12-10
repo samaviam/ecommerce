@@ -16,13 +16,19 @@ class Product extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name', 'slug', 'cover', 'images', 'quantity', 'regular_price',
+        'category_id', 'user_ids', 'name', 'slug',
+        'cover', 'images', 'quantity', 'regular_price',
         'reference', 'short_description', 'description', 'active',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    
+    public function users()
+    {
+        return $this->belongsToMany(User::class, null);
     }
 
     /**

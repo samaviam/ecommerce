@@ -68,7 +68,7 @@ class FrontController extends Controller
         return view('cms.contact-us');
     }
 
-    public function category($slug)
+    public function category(Request $request, $slug)
     {
         $orderBy = $request->get('order-by', 'date');
         $perPage = $request->get('per-page', 12);

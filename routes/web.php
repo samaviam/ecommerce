@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishListController;
 use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminCategoriesController;
 
@@ -19,30 +20,6 @@ use App\Http\Controllers\Admin\AdminCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
-| Front Routes
-|--------------------------------------------------------------------------
-*/
-Route::get('/', [FrontController::class, 'index'])->name('home');
-Route::get('/search', [FrontController::class, 'search'])->name('search');
-Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
-Route::get('/about-us', [FrontController::class, 'aboutUs'])->name('about-us');
-Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contact-us');
-Route::get('/{slug}', [FrontController::class, 'category'])->name('category');
-Route::get('/{category}/{slug}', [FrontController::class, 'product'])->name('product');
-Route::get('/washlist', [FrontController::class, 'wishlist'])->name('wishlist');
-Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
-Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
-Route::resource('/cart', CartController::class);
-
-Route::group(['prefix' => '/dashboard', 'as' => 'dashboard', 'middleware' => 'auth'], function () {
-    Route::view('/', 'customer.dashboard');
-    Route::view('/order-history', 'customer.order-history')->name('.order-history');
-});
-
-Auth::routes();
-
-/*
-|--------------------------------------------------------------------------
 | Admin Routes
 |--------------------------------------------------------------------------
 */
@@ -54,3 +31,28 @@ Route::group(['prefix' => '/admin', 'as' => 'admin'], function () {
         Route::resource('/categories', AdminCategoriesController::class);
     });
 });
+
+/*
+|--------------------------------------------------------------------------
+| Front Routes
+|--------------------------------------------------------------------------
+*/
+Auth::routes();
+
+Route::group(['prefix' => '/dashboard', 'as' => 'dashboard', 'middleware' => 'auth'], function () {
+    Route::view('/', 'customer.dashboard');
+    Route::view('/order-history', 'customer.order-history')->name('.order-history');
+});
+
+Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/search', [FrontController::class, 'search'])->name('search');
+Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
+Route::get('/about-us', [FrontController::class, 'aboutUs'])->name('about-us');
+Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contact-us');
+Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::resource('/cart', CartController::class);
+Route::resource('/wishlist', WishListController::class);
+
+Route::get('/{slug}', [FrontController::class, 'category'])->name('category');
+Route::get('/{category}/{slug}', [FrontController::class, 'product'])->name('product');
