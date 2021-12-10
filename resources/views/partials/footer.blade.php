@@ -94,7 +94,7 @@
                                             <li class="menu-item"><a href="#" class="link-term">Brands</a></li>
                                             <li class="menu-item"><a href="#" class="link-term">Gift Certificates</a></li>
                                             <li class="menu-item"><a href="#" class="link-term">Affiliates</a></li>
-                                            <li class="menu-item"><a href="{{ route('wishlist') }}" class="link-term">Wish list</a></li>
+                                            <li class="menu-item"><a href="{{ route('wishlist.index') }}" class="link-term">Wish list</a></li>
                                         </ul>
                                     </div>
                                 </div>

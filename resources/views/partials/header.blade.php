@@ -13,7 +13,7 @@
                     </div>
                     <div class="wrap-icon right-section">
                         <div class="wrap-icon-section wishlist">
-                            <a href="{{ route('wishlist') }}" class="link-direction">
+                            <a href="{{ route('wishlist.index') }}" class="link-direction">
                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
                                     <span class="index">0 item</span>
