@@ -1,9 +1,3 @@
-/*------------------------------------------------------------------
- [Master Stylesheet]
-
-  Project:	Star Admin2 
-  Version:	1.2.1
--------------------------------------------------------------------*/
 /*-------------------------------------------------------------------
   ===== Table of Contents =====
 
@@ -117,6 +111,14 @@
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/admin/fonts/IRANSans/IRANSansWeb.ttf') format("truetype"),
+      url('/admin/fonts/IRANSans/IRANSansWeb.woff') format("woff"),
+      url('/admin/fonts/IRANSans/IRANSansWeb.woff2') format("woff2");
+}
+
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -8692,7 +8694,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 31, 31, 31;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-sans-serif: "IRANSans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -10876,7 +10878,7 @@ textarea.form-control-lg {
 .form-select {
   display: block;
   width: 100%;
-  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  /* padding: 0.375rem 2.25rem 0.375rem 0.75rem; */
   -moz-padding-start: calc(0.75rem - 3px);
   font-size: 1rem;
   font-weight: 400;
@@ -13635,10 +13637,17 @@ fieldset:disabled .wizard > .actions a,
   margin-left: 1rem;
 }
 
+.card-header > *,
+.card-footer > * {
+  margin: 0;
+}
+
+.card-header,
+.card-footer {
+  padding: 1.2rem 1rem;
+}
+
 .card-header {
-  padding: 0.5rem 1rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid #e3e3e3;
 }
 
@@ -13647,8 +13656,6 @@ fieldset:disabled .wizard > .actions a,
 }
 
 .card-footer {
-  padding: 0.5rem 1rem;
-  background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid #e3e3e3;
 }
 
@@ -19947,12 +19954,6 @@ button:visited {
   outline: 0;
 }
 
-a:focus,
-input:focus {
-  border-color: transparent;
-  outline: none;
-}
-
 .bg-twitter {
   background: #4747A1;
 }
@@ -20028,7 +20029,7 @@ input:focus {
 /* Typography */
 body {
   font-size: 1rem;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--bs-body-font-family);
   font-weight: initial;
   line-height: normal;
   -webkit-font-smoothing: antialiased;
@@ -21562,6 +21563,10 @@ code {
   border: 1px solid #1E283D;
 }
 
+.badge i {
+  pointer-events: none;
+}
+
 /* Bootstrap Alerts */
 .alert {
   font-size: 0.812rem;
@@ -23047,6 +23052,7 @@ code {
   -webkit-transition: background 0.25s ease;
   -moz-transition: background 0.25s ease;
   -ms-transition: background 0.25s ease;
+  margin-bottom: 0.75rem;
   border: none;
   border: none;
 }
@@ -23956,7 +23962,7 @@ select.form-control, select.asColorPicker-input, .dataTables_wrapper select,
 .jsgrid .jsgrid-table .jsgrid-filter-row select, .select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, select.typeahead,
 select.tt-query,
 select.tt-hint {
-  padding: .4375rem .75rem;
+  /* padding: .4375rem .75rem; */
   border: 0;
   outline: 1px solid #dee2e6;
   color: #c9c8c8;
@@ -25149,7 +25155,7 @@ dl li {
 .pagination .page-item.active .page-link, .jsgrid .jsgrid-pager .page-item.active .page-link, .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button .page-link, .jsgrid .jsgrid-pager .active.jsgrid-pager-page .page-link, .pagination .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .page-item.active .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item.active a, .jsgrid .jsgrid-pager .active.jsgrid-pager-nav-button a,
 .pagination .page-item.active .jsgrid .jsgrid-pager .jsgrid-pager-page a,
 .jsgrid .jsgrid-pager .page-item.active .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item.active a,
-.jsgrid .jsgrid-pager .active.jsgrid-pager-page a, .pagination .page-item:hover .page-link, .jsgrid .jsgrid-pager .page-item:hover .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link, .pagination .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .page-item:hover .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:hover a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
+.jsgrid .jsgrid-pager .active.jsgrid-pager-page a, .jsgrid .jsgrid-pager .page-item:hover .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-page:hover .page-link, .pagination .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .page-item:hover .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:hover a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:hover a,
 .pagination .page-item:hover .jsgrid .jsgrid-pager .jsgrid-pager-page a,
 .jsgrid .jsgrid-pager .page-item:hover .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:hover a,
 .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a, .pagination .page-item:focus .page-link, .jsgrid .jsgrid-pager .page-item:focus .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:focus .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-page:focus .page-link, .pagination .page-item:focus .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .page-item:focus .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:focus a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:focus a,
@@ -25952,9 +25958,9 @@ dl li {
 }
 
 .table td img, .jsgrid .jsgrid-table td img {
-  width: 75px;
+  /* width: 75px; */
   height: 75px;
-  border-radius: 100%;
+  /* border-radius: 100%; */
 }
 
 .table td .badge, .jsgrid .jsgrid-table td .badge {
@@ -29910,6 +29916,36 @@ div.tagsinput span.tag a {
   color: initial;
 }
 
+.auth-page-sidebar {
+  padding: 0;
+  background-image: url(/admin/images/auth/login-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  height: 100%;
+  position: relative;
+}
+
+.auth-page-sidebar .overlay {
+  flex: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.auth-page-sidebar .auth-user-testimonial {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+  bottom: 3rem;
+  left: 0;
+  right: 0;
+}
+
 .page-body-wrapper {
   min-height: calc(100vh - 97px);
   display: -webkit-flex;
@@ -30052,7 +30088,7 @@ div.tagsinput span.tag a {
 
 .sidebar .nav .nav-item .nav-link i.menu-arrow:before {
   content: "\F142";
-  font-family: "Material Design Icons";
+  font-family: normal normal normal 24px/1 "Material Design Icons";
   font-style: normal;
   display: block;
   font-size: 0.687rem;
@@ -30105,10 +30141,6 @@ div.tagsinput span.tag a {
 
 .sidebar .nav .nav-item.active > .nav-link .menu-title {
   font-size: 13px;
-}
-
-.sidebar .nav .nav-item.active > .nav-link i.menu-arrow::before {
-  content: "\e64b";
 }
 
 .sidebar .nav .nav-item.active > .nav-link[aria-expanded="true"] {
@@ -30196,6 +30228,7 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav.sub-menu .nav-item {
+  position: relative;
   padding: 0;
 }
 

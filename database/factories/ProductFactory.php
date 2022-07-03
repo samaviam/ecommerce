@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'images' => [],
             'reference' => 'ref-' . $this->faker->numberBetween(0000, 9999),
             'quantity' => $this->faker->numberBetween(100, 500),
-            'regular_price' => $this->faker->numberBetween(10, 600),
+            'regular_price' => $this->faker->numberBetween(10000000, 100000000),
             'short_description' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'active' => $this->faker->boolean(),

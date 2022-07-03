@@ -30,7 +30,7 @@
   }
   if($('.input-daterange').length) {
     $('.input-daterange input').each(function() {
-      $(this).datepicker('clearDates');
+      $(this).datepicker();
     });
     $('.input-daterange').datepicker({});
   }

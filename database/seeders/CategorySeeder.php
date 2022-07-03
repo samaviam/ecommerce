@@ -25,9 +25,8 @@ class CategorySeeder extends Seeder
 
         Category::truncate();
 
-        Category::factory()
-            ->count(count($names))
-            ->afterMaking(function ($category) use(&$names) {
+        Category::factory(count($names))
+            ->afterMaking(function ($category) use (&$names) {
                 $name = array_pop($names);
                 $attributes = ['name' => $name, 'slug' => Str::slug($name)];
 

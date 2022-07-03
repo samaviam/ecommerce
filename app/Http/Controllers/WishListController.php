@@ -20,9 +20,9 @@ class WishListController extends Controller
      */
     public function index()
     {
-        $products = auth()->user()->wishes;
-
-        return view('cms.wishlist', compact('products'));
+        return view('cms.wishlist', [
+            'products' => auth()->user()->wishes,
+        ]);
     }
 
     /**

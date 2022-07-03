@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\Category;
-use File;
+use Illuminate\Support\Facades\File;
 
 class ProductSeeder extends Seeder
 {
@@ -18,19 +18,20 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $categories = Category::all('id');
+        $categories = Category::pluck('_id');
+        $pDir = storage_path('app/images/p/');
 
+        File::cleanDirectory($pDir);
         Product::truncate();
 
-        Product::factory()
-            ->count(5)
-            ->afterCreating(function ($product) use($categories) {
+        Product::factory(5)
+            ->afterCreating(function ($product) use ($categories, $pDir) {
                 $id = $product->id;
-                $pDir = 'app/images/p/' . $id;
+                $pDir .= $id . '/';
                 $images = [];
                 $i = $this->times * 4 + 1;
 
-                mkdir(storage_path($pDir));
+                mkdir($pDir);
 
                 foreach (range($i, ($i + 3)) as $n) {
                     $img = 'digital_' . ($n <= 9 ? '0' . $n : $n) . '.webp';
@@ -43,11 +44,11 @@ class ProductSeeder extends Seeder
 
                     File::copy(
                         public_path('images/products/' . $img),
-                        storage_path($pDir . '/' . $img)
+                        $pDir . $img
                     );
                 }
 
-                $product->fill(array_merge(['category_id' => $categories->random()->id], $images))->save();
+                $product->fill(array_merge(['category_id' => $categories->random()], $images))->save();
 
                 $this->times++;
             })

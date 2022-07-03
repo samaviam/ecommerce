@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'admin' => env('APP_ADMIN', 'admin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +167,7 @@ return [
          * Package Service Providers...
          */
 		Jenssegers\Mongodb\MongodbServiceProvider::class,
+        Jenssegers\Mongodb\MongodbQueueServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
 
         /*
@@ -173,7 +175,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 

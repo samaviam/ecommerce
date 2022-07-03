@@ -3,12 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
-use App\Traits\Cacheable;
 
 class Category extends Model
 {
-    use HasFactory, cacheable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -20,19 +18,9 @@ class Category extends Model
         'meta_title', 'meta_description', 'active',
     ];
 
-    /**
-     * @return string
-     */
-    protected static function getCacheName()
+    public function products()
     {
-        return 'Category';
-    }
-
-    public function scopeAllActive($query)
-    {
-        return $this->caching('all-active', function () use ($query) {
-            return $query->where('active', true)->get();
-        });
+        return $this->hasMany(Product::class);
     }
 
     public function scopeBySlug($query, $slug)

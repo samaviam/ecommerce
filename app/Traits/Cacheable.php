@@ -18,9 +18,9 @@ trait Cacheable
      * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
      */
-    public function find($id, $columns = ['*'])
+    public static function find($id, $columns = ['*'])
     {
-        return self::caching(
+        return (new static)->caching(
             'Find-' . $id . '(' . implode(',', (array) $columns) . ')',
             'find',
             $id, $columns
@@ -38,11 +38,11 @@ trait Cacheable
      *
      * @throws \InvalidArgumentException
      */
-    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    public static function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
     {
         $pageNumber = (int) request()->get($pageName) ?: 1;
 
-        return self::caching(
+        return (new static)->caching(
             'Paginate-' . $perPage . $pageName . $pageNumber . $page,
             'paginate',
             $perPage, $columns, $pageName, $page
@@ -57,13 +57,13 @@ trait Cacheable
      */
     public static function all($columns = ['*'])
     {
-        return self::caching('All-' . implode('.', (array) $columns), 'all', $columns);
+        return (new static)->caching('All-' . implode('.', (array) $columns), 'all', $columns);
     }
 
     protected function caching($aliases, $method, ...$parameters)
     {
         return Cache::rememberForever(
-            self::getCacheName() . ':' . $aliases,
+            static::getCacheName() . ':' . $aliases,
             function () use ($method, $parameters) {
                 if (is_callable($method))
                     return $method();

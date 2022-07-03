@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 
 class LoginController extends Controller
 {
@@ -35,6 +37,43 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:user,employee')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        redirect()->setIntendedUrl(session()->previousUrl());
+
+        return view('auth.login');
+    }
+
+    public function showAdminLoginForm()
+    {
+        return view('admin.login');
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $this->validateLogin($request);
+        $inputs = $request->only('email', 'password');
+
+        if (auth('employee')->attempt($inputs)) {
+            return redirect()->intended(route('admin'));
+        }
+
+        return back()->withInput($inputs);
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
     }
 }

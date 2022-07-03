@@ -18,8 +18,9 @@ class CreateCategoriesTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('description');
-            $table->string('meta_title');
-            $table->string('meta_description');
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
             $table->boolean('show');
             $table->boolean('active');
             $table->timestamps();

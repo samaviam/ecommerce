@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Cache;
-use App\Http\Requests\Admin\Products\StoreRequest;
+use App\Http\Requests\Admin\Products\Request as StoreRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Currency;
 use Illuminate\Http\Request;
 
 class AdminProductsController extends Controller
@@ -17,9 +19,9 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
-
-        return view('admin.catalog.products', compact('products'));
+        return view('admin.catalog.products', [
+            'products' => Product::paginate(10),
+        ]);
     }
 
     /**
@@ -29,13 +31,16 @@ class AdminProductsController extends Controller
      */
     public function create()
     {
-        return view('admin.catalog.product.create');
+        $categories = Category::allActive();
+        $currency = Currency::where('code', configuration('default_currency'))->first();
+
+        return view('admin.catalog.product.create', compact('categories', 'currency'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\Products\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request)
@@ -85,19 +90,41 @@ class AdminProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $currency = Currency::where('code', configuration('default_currency'))->first();
+
+        return view('admin.catalog.product.edit', [
+            'product' => $product,
+            'currency' => $currency,
+            'categories' => Category::allActive(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\Products\Request  $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+
+        Cache::flush();
+
+        return redirect()
+            ->route('admin.products.index')
+            ->with('success', __('Product(:name) updated.', ['name' => $product->name]));
+    }
+
+    public function changeStatus(Product $product)
+    {
+        $product->active = !$product->active;
+        $product->save();
+
+        Cache::flush();
+
+        return response([__('Success'), __('The product has been changed status.')]);
     }
 
     /**

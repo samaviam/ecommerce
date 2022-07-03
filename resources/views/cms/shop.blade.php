@@ -45,15 +45,7 @@
 					<div class="products row">
 						@include('catalog.products', compact('products'))
 					</div>
-					<div class="wrap-pagination-info">
-						<ul class="page-numbers">
-							<li><span class="page-number-item current" >1</span></li>
-							<li><a class="page-number-item" href="#" >2</a></li>
-							<li><a class="page-number-item" href="#" >3</a></li>
-							<li><a class="page-number-item next-link" href="#" >Next</a></li>
-						</ul>
-						<p class="result-count">Showing 1-8 of 12 result</p>
-					</div>
+					{{ $products->links('partials.pagination') }}
 				</div><!--end main products area-->
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
 					<div class="widget mercado-widget categories-widget">
@@ -181,7 +173,7 @@
 												</div>
 												<div class="product-info">
 													<a href="{{ route('product', ['slug' => $popular->slug]) }}" class="product-name"><span>{{ $popular->name }}</span></a>
-													<div class="wrap-price"><span class="product-price">{{ __('$:price', ['price' => $popular->regular_price]) }}</span></div>
+													<div class="wrap-price"><span class="product-price">@price($popular->regular_price)</span></div>
 												</div>
 											</div>
 										</li>

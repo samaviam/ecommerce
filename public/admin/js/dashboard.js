@@ -81,7 +81,7 @@
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
             for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+              // console.log(chart.data.datasets[i]); // see what's inside the obj.
               text.push('<li>');
               text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
               text.push(chart.data.datasets[i].label);
@@ -187,7 +187,7 @@
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
             for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+              // console.log(chart.data.datasets[i]); // see what's inside the obj.
               text.push('<li>');
               text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
               text.push(chart.data.datasets[i].label);
@@ -432,7 +432,7 @@
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
             for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+              // console.log(chart.data.datasets[i]); // see what's inside the obj.
               text.push('<li class="text-muted text-small">');
               text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
               text.push(chart.data.datasets[i].label);
@@ -524,7 +524,7 @@
             var text = [];
             text.push('<div class="chartjs-legend"><ul>');
             for (var i = 0; i < chart.data.datasets.length; i++) {
-              console.log(chart.data.datasets[i]); // see what's inside the obj.
+              // console.log(chart.data.datasets[i]); // see what's inside the obj.
               text.push('<li class="text-muted text-small">');
               text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
               text.push(chart.data.datasets[i].label);

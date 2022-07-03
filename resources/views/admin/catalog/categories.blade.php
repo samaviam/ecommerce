@@ -7,6 +7,9 @@
 @endsection
 
 @section('content')
+  @if (session()->has('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+  @endif
   <div class="card">
     <div class="card-body">
       <div class="card-title">
@@ -28,13 +31,16 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($categories as $category)
+                @forelse ($categories as $category)
                   <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
-                    <td>{!! strip_tags($category->description) !!}</td>
+                    <td>{{ Str::limit(strip_tags($category->description), 30) }}</td>
                     <td>
-                      <a href="#" class="badge badge-{{ $category->active ? 'success' : 'danger' }}">
+                      <a href="{{ route('admin.categories.change-status', $category) }}" class="badge badge-{{ $category->active ? 'success' : 'danger' }}"
+                        data-text-inactive="{{ __('Disable') }}"
+                        data-text-active="{{ __('Enable') }}"
+                        onclick="updateStatus('{{ $category->id }}')">
                         @if ($category->active)
                           <i class="mdi mdi-check"></i> {{ __('Enable') }}
                         @else
@@ -44,7 +50,7 @@
                     </td>
                     <td>
                       <div class="btn-group">
-                        <a href="{{ route('admin.categories.edit', ['category' => $category->id]) }}" class="btn btn-secondary"><i class="mdi mdi-pencil"></i> {{ __('Edit') }}</a>
+                        <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-secondary"><i class="mdi mdi-pencil"></i> {{ __('Edit') }}</a>
                         <button id="category-{{ $loop->iteration }}" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-haspop="true" aria-expanded="false"></button>
                         <div class="dropdown-menu" aria-labelledby="category-{{ $loop->iteration }}">
                           <button class="dropdown-item" onclick="remove('{{ $category->id }}')"><i class="mdi mdi-delete"></i> {{ __('Delete') }}</button>
@@ -52,9 +58,17 @@
                       </div>
                     </td>
                   </tr>
-                @endforeach
+                @empty
+                  <tr class="border-0">
+                    <td colspan="5" class="border-0 text-center p-0 pt-4"><i class="mdi mdi-alert fs-2"></i></td>
+                  </tr>
+                  <tr class="border-0">
+                    <td colspan="5" class="text-center p-2">{{ __('No records found.') }}</td>
+                  </tr>
+                @endforelse
               </tbody>
             </table>
+            {{ $categories->links('admin.partials.pagination') }}
           </div>
         </div>
       </div>

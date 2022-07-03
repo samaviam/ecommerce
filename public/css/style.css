@@ -48,10 +48,15 @@ Primary use:    Ecommerce
 
 -------------------------------------------------------------------*/
 
-
+@font-face {
+    font-family: 'IRANSans';
+    src: url('/fonts/IRANSansWeb.ttf') format("truetype"),
+        url('/fonts/IRANSansWeb.woff') format("woff"),
+        url('/fonts/IRANSansWeb.woff2') format("woff2");
+}
 
 body{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', 'IRANSans', sans-serif;
 	font-size: 13px;
 	color: #444444;
 	overflow-x: hidden;
@@ -74,11 +79,11 @@ button:hover, button:focus, button:visited, button:active{
 /*Font faticon*/
 @font-face {
     font-family: "Flaticon";
-    src: url("assets/fonts/Flaticon.eot");
-    src: url("assets/fonts/Flaticond41d.eot?#iefix") format("embedded-opentype"),
-    url("assets/fonts/Flaticon.woff") format("woff"),
-    url("assets/fonts/Flaticon.ttf") format("truetype"),
-    url("assets/fonts/Flaticon.svg#Flaticon") format("svg");
+    src: url("/fonts/Flaticon.eot");
+    src: url("/fonts/Flaticond41d.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Flaticon.woff") format("woff"),
+    url("/fonts/Flaticon.ttf") format("truetype"),
+    url("/fonts/Flaticon.svg#Flaticon") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -1566,6 +1571,7 @@ li.menu-item .nav-label.sale-label::before{
 }
 .wrap-show-advance-info-box{
     display: inline-block;
+    width: 100%;
     margin: 0;
     padding: 0;
     max-width: 100%;
@@ -1661,12 +1667,14 @@ li.menu-item .nav-label.sale-label::before{
 .has-countdown .wrap-products{
     display: inline-block;
 }
+.wrap-show-advance-info-box.on-sale .wrap-products{
+    border: 1px solid #e6e6e6;
+}
 .wrap-show-advance-info-box.has-countdown{
     position: relative;
 }
 .wrap-show-advance-info-box.has-countdown .wrap-products{
     border: 1px solid #e6e6e6;
-    padding-top: 39px;
 }
 .wrap-show-advance-info-box>.wrap-countdown{
     display: inline-block;
@@ -1714,7 +1722,6 @@ li.menu-item .nav-label.sale-label::before{
     display: inline-block;
     padding: 19px 9px 13px 9px;
     border: 1px solid transparent;
-    margin-bottom: 9px;
     -webkit-transition: all 0.5s ease 0s;
     -moz-transition: all 0.5s ease 0s;
     -ms-transition: all 0.5s ease 0s;
@@ -1738,18 +1745,19 @@ li.menu-item .nav-label.sale-label::before{
     max-width: 83px;
 }
 .product .product-thumnail .group-flash .flash-item{
+    white-space: nowrap;
     display: inline-block;
     float: left;
     color: #fff;
     text-transform: uppercase;
     background: #00bf3f;
     font-size: 10px;
-    font-weight: 600;
     padding: 1.5px 9px 5.5px 9px;
     line-height: 10px;
     position: relative;
     margin-bottom: 10px;
     margin-left: 8px;
+    z-index: 9;
 }
 .product .product-thumnail .group-flash .flash-item::before{
     content: '';
@@ -1842,7 +1850,6 @@ li.menu-item .nav-label.sale-label::before{
 }
 .product .product-info .wrap-price span.product-price,
 .product-style-2 .product-info .wrap-price span.product-price{
-    font-family: 'Lato', san-serif;
     font-weight: 700;
     color: #222222;
 }
@@ -1857,10 +1864,9 @@ li.menu-item .nav-label.sale-label::before{
 .wrap-product-detail .detail-info .wrap-price del>p,
 .product .product-info .wrap-price del>p,
 .product-style-2 .product-info .wrap-price del>p{
-    font-family: 'Lato', san-serif;
     font-weight: 300;
     font-size: 13px !important;
-    color: #aaaaaa;
+    color: #6f6f6f;
     text-decoration: line-through;
 }
 .product .product-thumnail,
@@ -2422,7 +2428,8 @@ li.menu-item .nav-label.sale-label::before{
     padding: 0 5px;
     height: 35px;
 }
-.wrap-pagination-info .page-numbers li .page-number-item.next-link{
+.wrap-pagination-info .page-numbers li .page-number-item.next-link,
+.wrap-pagination-info .page-numbers li .page-number-item.previous-link{
     min-width: 77px !important;
 }
 .wrap-pagination-info .page-numbers li .page-number-item:not(.current){
@@ -4001,6 +4008,7 @@ article.single-post blockquote p:last-child::after{
     text-align: left;
 }
 .wrap-iten-in-cart .products-cart .price-field p{
+    direction: rtl;
     font-size: 22px;
     line-height: 18px;
     color: #222222;
@@ -4140,6 +4148,7 @@ article.single-post blockquote p:last-child::after{
     text-align: left;
 }
 .order-summary .summary-info .index{
+    direction: rtl;
     color: #333333;
     font-weight: 700;
     float: right;
@@ -4283,6 +4292,9 @@ article.single-post blockquote p:last-child::after{
     margin: 0; 
     text-align: center;
 }
+.product-gallery .slides {
+    padding: 0;
+}
 .flex-control-thumbs .owl-item{
     float: left;
 }
@@ -4297,9 +4309,10 @@ article.single-post blockquote p:last-child::after{
     display: inline-block;
 }
 .flex-control-nav{
-    text-align: left;
+    width: 100%;
+    text-align: center;
     position: relative;
-    padding-right: 3px;
+    padding: 0;
 }
 .flex-direction-nav{
     display: none;
@@ -4500,9 +4513,8 @@ article.single-post blockquote p:last-child::after{
     padding-right: 8px;
 }
 .wrap-product-detail .detail-info .wrap-price del>p{
-    font-family: 'Lato', san-serif;
     font-weight: 300;
-    font-size: 20px !important;
+    font-size: 15px !important;
     color: #aaaaaa;
     text-decoration: line-through;
 }
@@ -4818,59 +4830,6 @@ table.shop_attributes tbody{
 .detail .main-content-area{
     margin-bottom: 10px;
 }
-.wrap-address-billing .row-in-form{
-    margin: 0;
-    display: block;
-    float: left;
-    width: calc( 50% - 15px );
-    width: -webkit-calc( 50% - 15px );
-    width: -moz-calc( 50% - 15px );
-    margin-bottom: 23px;
-}
-.wrap-address-billing .row-in-form.fill-wife{
-    width: 100%;
-    margin-right: 0px !important; 
-}
-.wrap-address-billing .row-in-form label{
-    font-size: 14px;
-    line-height: 19px;
-    color: #555555;
-    display: block;
-    font-weight: 400;
-}
-.wrap-address-billing .row-in-form label.checkbox-field{
-    display: inline-block;
-    margin-bottom: 0;
-    margin-top: 2px;
-}
-.wrap-address-billing .row-in-form label.checkbox-field:not(:last-child){
-    margin-right: 17px;
-}
-.wrap-address-billing .row-in-form label:first-letter{
-    text-transform: uppercase;
-}
-.wrap-address-billing .row-in-form label span{
-    color: #ff2832;
-}
-.wrap-address-billing .row-in-form input[type=email],
-.wrap-address-billing .row-in-form input[type=text],
-.wrap-address-billing .row-in-form input[type=number]{
-    font-size: 13px;
-    line-height: 19px;
-    display: inline-block; 
-    height: 43px;
-    padding: 2px 20px;
-    width: 100%;
-    border: 1px solid #e6e6e6;
-}
-.wrap-address-billing .row-in-form input[type=email]::placeholder,
-.wrap-address-billing .row-in-form input[type=text]::placeholder,
-.wrap-address-billing .row-in-form input[type=tel]::placeholder{
-    color: #aaaaaa;
-}
-.wrap-address-billing .row-in-form:nth-child(2n+1){
-    margin-right: 30px;
-}
 .summary-checkout{
     background-color: #fdfdfd;
     width: 100%;
@@ -5029,7 +4988,8 @@ table.shop_attributes tbody{
     margin-bottom: 14px !important;
 }
 .wrap-address-billing{
-    display: inline-block;
+    border: 1px solid #e6e6e6;
+    padding: 29px 29px 30px 29px;
 }
 .payment-method .choose-payment-methods{
     border-top: 1px solid #e6e6e6;

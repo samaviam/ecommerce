@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->belongsTo(Rank::class);
     }
 
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
     public function wishes()
     {
         return $this->belongsToMany(Product::class);

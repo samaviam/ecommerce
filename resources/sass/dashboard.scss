@@ -64,3 +64,13 @@
     border-radius: 4px;
     margin-bottom: 1em;
 }
+
+.address-card {
+    margin-bottom: 15px;
+
+    tr:first-of-type {
+        td, th {
+            border: 0;
+        }
+    }
+}

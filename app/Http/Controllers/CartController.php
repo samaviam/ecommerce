@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CartUpdated;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Cart;
 
 class CartController extends Controller
 {
+    private $currency;
+
+    public function __construct()
+    {
+        $this->currency = \Currency::getUserCurrency() ?? configuration('default_currency');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -58,6 +66,8 @@ class CartController extends Controller
                 'slug' => $product->slug,
                 'image' => $product->cover,
                 'category' => $product->category->slug,
+                'old_price' => $product->old_price ?? null,
+                'reduction' => $product->reduction ?? null,
             ],
         ]);
 
@@ -95,6 +105,9 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $defaultCurrency = configuration('default_currency');
+        $currency = \Currency::getUserCurrency() ?? configuration('default_currency');
+
         Cart::update(
             $id,
             [
@@ -107,8 +120,8 @@ class CartController extends Controller
 
         return response()->json([
             'quantity' => Cart::getTotalQuantity(),
-            'total' => '$' . Cart::get($id)->getPriceSum(),
-            'subtotal' => '$' . Cart::getSubTotal(),
+            'total' => currency(Cart::get($id)->getPriceSum(), $defaultCurrency, $currency),
+            'subtotal' => currency(Cart::getSubTotal(), $defaultCurrency, $currency),
         ]);
     }
 
@@ -120,11 +133,13 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
+        $currency = \Currency::getUserCurrency() ?? configuration('default_currency');
+
         Cart::remove($id);
 
         return response()->json([
             'quantity' => Cart::getTotalQuantity(),
-            'subtotal' => '$' . Cart::getSubTotal(),
+            'subtotal' => currency()->format(Cart::getSubTotal(), $currency),
         ]);
     }
 

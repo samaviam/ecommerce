@@ -19,7 +19,7 @@
   @endif
   <div class="card">
     <div class="card-body">
-      <form id="create-category-form" action="{{ route('admin.categories.store') }}" method="POST">
+      <form id="create-category-form" class="wizard-form" action="{{ route('admin.categories.store') }}" method="POST">
         @csrf
         <div>
           <h3>{{ __('Content') }}</h3>
@@ -42,6 +42,10 @@
               <div class="form-group">
                   <label for="meta-title">{{ __('Meta title') }}</label>
                   <input type="text" name="meta-title" value="{{ old('meta-title') }}" id="meta-title" class="form-control" placeholder="{{ __('To have a different meta title with the category name, enter it here.') }}">
+              </div>
+              <div class="form-group">
+                  <label for="meta-keywords">{{ __('Meta keywords') }}</label>
+                  <input type="text" name="meta-keywords" value="{{ old('meta-keywords') }}" id="meta-keywords" class="form-control" placeholder="Meta keywords">
               </div>
               <div class="form-group">
                   <label for="meta-description">{{ __('Meta description') }}</label>

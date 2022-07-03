@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Currency;
+use App\Models\Banner;
 use App\Models\Product;
+use App\Models\SpecificPrice;
 use App\Models\Category;
+use App\Models\Slider;
+use App\Events\CurrencyChanged;
 
 class FrontController extends Controller
 {
@@ -15,7 +20,26 @@ class FrontController extends Controller
 
     public function index()
     {
-        return view('index');
+        $onSales = Product::has('specificPrice')->get();
+
+        return view('index', [
+            'slider' => Slider::all(),
+            'banners' => Banner::homepage(),
+            'onSales' => $onSales,
+        ]);
+    }
+
+    public function changeCurrency($code)
+    {
+        $code = strtoupper($code);
+
+        Currency::where(['code' => $code, 'in_use' => true, 'active' => true])->firstOrFail();
+
+        // CurrencyChanged::dispatch($code);
+
+        session()->put('currency', $code);
+
+        return redirect()->back();
     }
 
     public function search(Request $request)
@@ -46,7 +70,7 @@ class FrontController extends Controller
                 break;
         }
 
-        $products = $products->where('active', true)->with('category')->paginate($perPage);
+        $products = $products->where('active', true)->with('category', 'specificPrice')->paginate($perPage);
 
         if ($request->ajax()) {
             return view('catalog.products', compact('products'));
@@ -70,6 +94,7 @@ class FrontController extends Controller
 
     public function category(Request $request, $slug)
     {
+        $category = Category::bySlug($slug);
         $orderBy = $request->get('order-by', 'date');
         $perPage = $request->get('per-page', 12);
 
@@ -85,7 +110,7 @@ class FrontController extends Controller
                 break;
         }
 
-        $products = $products->where('active', true)->with('category')->paginate($perPage);
+        $products = $products->where(['category_id' => $category->id, 'active' => true])->with('category')->paginate($perPage);
 
         if ($request->ajax()) {
             return view('catalog.products', compact('products'));
@@ -113,6 +138,7 @@ class FrontController extends Controller
 
     public function checkout()
     {
-        return view('checkout.checkout');
+        $addresses = auth()->user()->addresses;
+        return view('checkout.checkout', compact('addresses'));
     }
 }

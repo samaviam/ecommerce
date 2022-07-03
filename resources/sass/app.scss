@@ -1,3 +1,47 @@
+$bg-card: #fff;
+$border-card: 1px solid #ddd;
+
+.btn {
+    border-radius: 0;
+    &.btn-primary {
+        border-color: #e6e6e6;
+        background-color: #f5f5f5;
+        color: #333333;
+
+        &:hover {
+            background-color: #ff2832;
+            border-color: #ff2832;
+            color: #fff;
+        }
+    }
+
+    &.btn-danger:hover {
+        background-color: #333333;
+        border-color: #333333;
+    }
+}
+
+.card {
+    background-color: $bg-card;
+    border-radius: 5px;
+    border: $border-card;
+
+    .card-header {
+        font-size: 18px;
+        padding: 10px 15px;
+        border-bottom: inherit;
+    }
+
+    .card-body {
+        padding: 10px 15px;
+    }
+
+    .card-footer {
+        padding: 10px 15px;
+        border-top: inherit;
+    }
+}
+
 .is-invalid {
     border-color: #ff2832 !important;
 }
@@ -76,4 +120,85 @@
     &:nth-child(3) {
         fill-opacity: 0.4;
     }
+}
+
+.checkout {
+    border: 1px solid #e6e6e6;
+    padding: 10px;
+
+    button[type="submit"] {
+        background-color: #ff2832;
+        color: #fff;
+        margin-top: 10px;
+        
+        &:hover {
+            background-color: #333333;
+        }
+    }
+}
+
+.addresses {
+    margin-bottom: 1.5rem;
+}
+
+.address {
+    input[type="radio"] {
+        position: absolute;
+        visibility: hidden;
+        
+        &:checked {
+            & ~ label {
+                border-color: #ff2832;
+                color: #ff2832;
+
+                .check {
+                    border-color: #ff2832;
+                }
+    
+                .check::before {
+                    background-color: #ff2832;
+                }
+            }
+        }
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+        border: 1px solid #e6e6e6;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover, &:hover .check {
+            border-color: #ff2832;
+        }
+    }
+
+    .check {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        border: 3px solid #e6e6e6;
+        border-radius: 50%;
+        margin: 0 20px;
+        transition: all 0.2s;
+        
+        &::before {
+            content: '';
+            display: block;
+            background: #e6e6e6;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+    }
+}
+
+.product-price {
+    direction: rtl;
 }

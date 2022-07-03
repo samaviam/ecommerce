@@ -21,6 +21,7 @@ class CategoryFactory extends Factory
             'slug' => '',
             'description' => $description,
             'meta_title' => $this->faker->boolean() ? '' : $this->faker->unique->words(4, true),
+            'meta_keywords' => $this->faker->boolean() ? '' : $this->faker->unique->words(4),
             'meta_description' => $this->faker->boolean() ? $description : $this->faker->paragraph(),
             'show' => $this->faker->boolean(),
             'active' => $this->faker->boolean(),

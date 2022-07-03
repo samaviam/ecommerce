@@ -19,7 +19,7 @@
   @endif
   <div class="card">
     <div class="card-body">
-      <form id="create-product-form" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+      <form id="create-product-form" class="wizard-form" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
           <h3>{{ __('Basic settings') }}</h3>
@@ -32,6 +32,14 @@
             <div class="form-group">
               <label for="product-slug">{{ __('Slug *') }}</label>
               <input type="text" name="slug" value="{{ old('slug') }}" id="product-slug" class="form-control required" placeholder="product-name" required="required">
+            </div>
+            <div class="form-group">
+              <label for="categories">{{ __('Category') }}</label>
+              <select name="category" id="categories" class="form-control form-select required" required=" required" aria-label=".form-select">
+                @foreach ($categories as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="cover">{{ __('Cover image *') }}</label>
@@ -56,18 +64,6 @@
               <textarea name="description" value="{{ old('description') }}" id="description"></textarea>
             </div>
           </section>
-          <h3>{{ __('Category') }}</h3>
-          <section>
-            <h3>{{ __('Category') }}</h3>
-            <div class="form-group">
-              <label for="categories">{{ __('Category') }}</label>
-              <select id="categories" class="form-select form-select-sm" aria-label=".form-select-sm">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </section>
           <h3>{{ __('Other settings') }}</h3>
           <section>
             <h3>{{ __('Other settings') }}</h3>
@@ -79,7 +75,7 @@
               <div class="col">
                 <label for="price">{{ __('Price') }}</label>
                 <div class="input-group">
-                  <span class="input-group-text">{{ __('$') }}</span>
+                  <span class="input-group-text">{{ $currency->symbol }}</span>
                   <input type="text" name="price" value="{{ old('price') }}" id="price" class="form-control" />
                 </div>
               </div>

@@ -43,10 +43,10 @@
 {
 	color: #ff2832 !important;
 }
-
 .product-style-1 .product-info .wrap-btn a::after,
 .primary .menu-item.home-icon,
 .center-section .wrap-search-form button,
+.btn.btn-danger,
 .wrap-banner .banner-link,
 .wrap-main-slide .slide-1 .btn-link,
 .wrap-main-slide .slide-3 .btn-link,
@@ -83,6 +83,7 @@
 .wrap-pagination-info .page-numbers li .page-number-item:hover{
 	background: #ff2832 !important;
 }
+.btn.btn-danger,
 .flex-control-thumbs img.flex-active,
 .wrap-product-detail .advance-info .tab-control a.active,
 .wrap-product-detail .detail-info .quantity-input .btn:hover,

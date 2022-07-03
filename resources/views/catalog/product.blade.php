@@ -11,8 +11,17 @@
             ]) !!}" page-name="{{ $product->name }}" />
 			<div class="row">
 				<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
-					<div class="wrap-product-detail">
-						<div class="detail-media">
+					<div class="wrap-product-detail product">
+						<div class="detail-media product-thumnail">
+							@if ($product->specificPrice)
+        					    <div class="group-flash">
+        					        @if ($product->specificPrice->reduction_type == 'percentage')
+        					            <span class="flash-item sale-label">&minus;{{ $product->specificPrice->reduction }}%</span>
+        					        @else
+        					            <span class="flash-item sale-label">&minus;@price($product->specificPrice->reduction)</span>
+        					        @endif
+        					    </div>
+        					@endif
 							<div class="product-gallery">
 							  <ul class="slides">
 							    <li data-thumb="{{ asset('storage/images/p/' . $product->id . '/' . $product->cover) }}">
@@ -43,7 +52,11 @@
                             <div class="wrap-social">
                             	<a class="link-socail" href="#"><img src="{{ asset('images/social-list.png') }}" alt=""></a>
                             </div>
-                            <div class="wrap-price"><span class="product-price">{{ __('$:price', ['price' => $product->regular_price]) }}</span></div>
+                            @if ($product->specificPrice)
+        					    <div class="wrap-price"><ins><p class="product-price">@price($product->regular_price)</p></ins> <del><p class="product-price">@price($product->old_price)</p></del></div>
+        					@else
+        					    <div class="wrap-price"><span class="product-price">@price($product->regular_price)</span></div>
+        					@endif
                             <div class="stock-info in-stock">
                                 <p class="availability">{{ __('Availability:') }} <b>{{ __($product->quantity ? 'In Stock' : 'Out Stock') }}</b></p>
                             </div>
@@ -217,7 +230,7 @@
 												</div>
 												<div class="product-info">
 													<a href="{{ route('product', ['slug' => $popular->slug]) }}" class="product-name"><span>{{ $popular->name }}</span></a>
-													<div class="wrap-price"><span class="product-price">{{ __('$:price', ['price' => $popular->regular_price]) }}</span></div>
+													<div class="wrap-price"><span class="product-price">@price($product->regular_price)</span></div>
 												</div>
 											</div>
 										</li>
@@ -250,7 +263,7 @@
 											</div>
 											<div class="product-info">
 												<a href="#" class="product-name"><span>{{ $related->name }}</span></a>
-												<div class="wrap-price"><span class="product-price">{{ __('$:price', ['price' => $related->regular_price]) }}</span></div>
+												<div class="wrap-price"><span class="product-price">@price($product->regular_price)</span></div>
 												<div class="wrap-price"><ins><p class="product-price">$168.00</p></ins> <del><p class="product-price">$250.00</p></del></div>
 											</div>
 										</div>

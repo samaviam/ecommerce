@@ -41,6 +41,10 @@
     }
 }
 
+.product-price {
+    direction: rtl;
+}
+
 @keyframes spinner {
     to {
         transform: rotate(360deg);
